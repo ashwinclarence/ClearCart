@@ -1,8 +1,42 @@
-# React + Vite
+# ClearCart E-Commerce Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ClearCart is a modern e-commerce application built using Vite, React.js, Bootstrap, and Firebase. It provides a seamless shopping experience with features like product browsing, cart management, and secure checkout.
 
-Currently, two official plugins are available:
+## Table of Contents
+- [Demo](#demo)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Demo
+
+Check out the live demo [here](#your-live-demo-url).
+
+## Features
+
+- Browse products and categories
+- Add products to the shopping cart
+- Manage the shopping cart
+- Secure checkout with Firebase authentication
+- Real-time updates on order status
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following tools installed:
+
+- Node.js: [https://nodejs.org/](https://nodejs.org/)
+- npm (Node Package Manager): This comes with Node.js installation.
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/ashwinclarence/ClearCart.git
