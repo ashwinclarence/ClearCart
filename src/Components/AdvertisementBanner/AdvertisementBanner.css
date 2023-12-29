@@ -1,0 +1,10 @@
+.row>* {
+    max-width: 100%;
+    padding-right:0;
+    padding-left: 0;
+    margin-top: 0;
+}
+.banner-container img{
+    width: 100%; 
+    
+}

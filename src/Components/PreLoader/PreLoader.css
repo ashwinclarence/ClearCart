@@ -1,0 +1,12 @@
+.pre-loader{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: #2eaf7d;  */
+    background: linear-gradient(140deg,#2eaf7d,#02353c);
+}
+.pre-loader img{
+    width: 400px;
+}

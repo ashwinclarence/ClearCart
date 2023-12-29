@@ -1,0 +1,203 @@
+
+.navbar-container{
+    padding: 20px 50px;
+    background-color:  #131A22;
+    z-index: 999;
+    
+}
+.logo{
+    width: 200px;
+}
+.nav-right{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+}
+.search{
+    display: flex;
+    flex-direction: row;
+    border: 2px solid #000;
+    width: 500px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fff;
+    padding: 5px;
+}
+
+.search input{
+    border: none;
+    outline: none;
+    height: 100%;
+    width: 90%;
+}
+.search i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scale: 1.4;
+    width: 10%;
+    background-color: #fff;
+    background-color: #b9b9b9!important;
+    cursor: pointer;
+}
+
+.language select{
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    background: transparent;
+    color: #fff;
+    font-weight: 600;
+}
+.language option{
+    color: #ffffff;
+    background-color: #131A22;
+   
+}
+
+
+.profile img{
+    outline: none;
+    width: 40px;
+    background-color: #fff;
+    border-top: 4px solid #0000ff;
+    border-right: 4px solid #449342;
+    border-bottom: 4px solid #449342;
+    border-left: 4px solid #0000ff;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    transition: .3s ease-in-out;
+}
+.profile img:hover{
+    border-right: 4px solid #449342;
+    border-bottom: 4px solid #0000ff;
+    border-left: 4px solid #0000ff;
+    border-top: 4px solid #449342;
+}
+.cart button{
+    width: 80px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    border-top: 4px solid  #0000ff;
+    border-right: 4px solid  #449342;
+    border-bottom: 4px solid  #449342;
+    border-left: 4px solid  #0000ff;
+    background: transparent;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    transition: .3s ease-in-out;
+}
+.cart button:hover{
+    border-right: 4px solid #449342;
+    border-bottom: 4px solid #0000ff;
+    border-left: 4px solid #0000ff;
+    border-top: 4px solid #449342;
+}
+
+
+/* side bar */
+
+.nav-menu{
+    /* background-color: #449342; */
+    background: linear-gradient(140deg,#131A22,#37475A);
+    /* background-color: #37475A; */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    transition: 850ms;
+
+}
+.nav-menu.active{
+    right: 0;
+    transition: 350ms;
+}
+.nav-menu-items{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+.fa-xmark{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    color: #fff;
+    
+}
+.profile-image {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+
+}
+.profile-image img{
+    width: 100px;
+    height: 100px;
+    outline: none;
+    background-color: #fff;
+    border-radius: 50%;
+}
+.profile-name{
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 2px solid gray;
+    color: #fff;
+   
+}
+.profile-name h3{
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.view-profile{
+    text-decoration: none;
+    color: #b5b5b5;
+}
+.profile-links{
+    font-weight: 600;
+   text-transform: uppercase;
+   display: flex;
+   gap: 10px;
+   color: #b5b5b5;
+}
+.profile-links i{
+    width: 30px;
+}
+.part{
+    padding-bottom: 10px;
+    border-bottom: 2px solid gray;
+}
+
+/* phones */
+@media only screen and (max-width: 600px) {
+    #language {
+        display: none !important;
+        
+    }
+    .cart {
+        display: none !important;
+    }
+    .logo {
+        display: none !important;
+    }
+}
+
+/* Add this CSS in your stylesheet or component
+ @media only screen and (max-width: 600px) {
+   .nav-right{
+    display: none;
+   }
+  } */
+  
+  
