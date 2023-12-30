@@ -66,7 +66,7 @@ function UserNavbar() {
                     </li>
                     <li className="profile-links">
                         <i className="fa-solid fa-people-arrows"></i>
-                        <Link to='/' className='view-profile'>Switch Account</Link>
+                        <Link to='/register' className='view-profile'>Switch Account</Link>
                     </li>
                     <li className="profile-links">
                         <i className="fa-solid fa-right-from-bracket"></i>

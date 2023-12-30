@@ -1,0 +1,138 @@
+.login-form-container {
+    /* background: linear-gradient(140deg, #131A22, #37475A); */
+    background: url('../../images/loginmobilebg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.login-form {
+    position: relative;
+    background-color: #131A22;
+    border-radius: 10px;
+    height: 400px;
+    width: 800px;
+    overflow: hidden;
+}
+
+.left-form {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    overflow: hidden;
+
+}
+
+.right-form {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.left-form img {
+    width: 100%;
+    height: 100%;
+}
+
+.login-form h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #FEBD69;
+}
+
+.login-form form {
+    /* background-color: green; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.right-form img {
+    width: 300px;
+}
+
+.login-form input {
+    width: 90%;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    color: #000000;
+}
+
+.login-form button {
+    width: 30%;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    background-color: #FEBD69;
+    font-weight: 700;
+}
+
+.login-form button:hover {
+    background-color: #ffaf46;
+
+}
+
+.back-home {
+    text-decoration: none;
+    color: #fff;
+}
+
+.login-form p {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+@media only screen and (max-width: 800px) {
+    .login-form-container{
+        background: url('../../images/loginmobilebg2.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        /* filter: blur(4px);
+        -webkit-filter: blur(4px); */
+    }
+
+    .login-form {
+        background: transparent;
+        width: 100%;
+    }
+
+    .login-form input {
+        color: #fff;
+        background: transparent;
+        border-bottom: 2px solid rgb(255, 255, 255);
+    }
+    ::placeholder{
+        color: #fff;
+    }
+
+    .login-form form {
+        gap: 50px;
+    }
+
+    .left-form {
+        display: none;
+
+    }
+
+    .right-form {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding: 20px;
+    }
+}

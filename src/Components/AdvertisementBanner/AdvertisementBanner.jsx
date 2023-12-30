@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './AdvertisementBanner.css';
 import adImage1 from '../../images/add2.png';
 import adImage2 from '../../images/add3.png';

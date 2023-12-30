@@ -5,7 +5,11 @@
     align-items: center;
     height: 100vh;
     /* background-color: #2eaf7d;  */
-    background: linear-gradient(140deg,#131A22,#37475A);
+    /* background: linear-gradient(140deg,#131A22,#37475A); */
+    background: url('../../images/preload1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .pre-loader img{
     width: 400px;
