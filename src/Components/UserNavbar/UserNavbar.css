@@ -1,20 +1,25 @@
-
-.navbar-container{
+.navbar-container {
     padding: 20px 50px;
-    background-color:  #131A22;
+    background-color: #131A22;
     z-index: 999;
-    
+    position: fixed;
+    top: 0;
+    z-index: 100;
+
 }
-.logo{
+
+.logo {
     width: 200px;
 }
-.nav-right{
+
+.nav-right {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: 30px;
 }
-.search{
+
+.search {
     display: flex;
     flex-direction: row;
     border: 2px solid #000;
@@ -25,24 +30,25 @@
     padding: 5px;
 }
 
-.search input{
+.search input {
     border: none;
     outline: none;
     height: 100%;
     width: 90%;
 }
-.search i{
+
+.search i {
     display: flex;
     align-items: center;
     justify-content: center;
     scale: 1.4;
     width: 10%;
     background-color: #fff;
-    background-color: #b9b9b9!important;
+    background-color: #b9b9b9 !important;
     cursor: pointer;
 }
 
-.language select{
+.language select {
     border: none;
     outline: none;
     border-radius: 5px;
@@ -52,61 +58,65 @@
     color: #fff;
     font-weight: 600;
 }
-.language option{
+
+.language option {
     color: #ffffff;
     background-color: #131A22;
-   
+
 }
 
 
-.profile img{
+.profile img {
     outline: none;
     width: 40px;
     background-color: #fff;
-    border-top: 4px solid #0000ff;
-    border-right: 4px solid #449342;
-    border-bottom: 4px solid #449342;
-    border-left: 4px solid #0000ff;
+    border-top: 4px solid #37475A;
+    border-right: 4px solid #37475A;
+    border-bottom: 4px solid #FEBD69;
+    border-left: 4px solid #37475A;
     border-radius: 50%;
     overflow: hidden;
     display: flex;
     justify-content: center;
     transition: .3s ease-in-out;
 }
-.profile img:hover{
-    border-right: 4px solid #449342;
-    border-bottom: 4px solid #0000ff;
-    border-left: 4px solid #0000ff;
-    border-top: 4px solid #449342;
+
+.profile img:hover {
+    border-top: 4px solid #FEBD69;
+    border-right: 4px solid #FEBD69;
+    border-bottom: 4px solid #FEBD69;
+    border-left: 4px solid #FEBD69;
 }
-.cart button{
+
+.cart button {
     width: 80px;
     border: none;
     outline: none;
     border-radius: 20px;
-    border-top: 4px solid  #0000ff;
-    border-right: 4px solid  #449342;
-    border-bottom: 4px solid  #449342;
-    border-left: 4px solid  #0000ff;
+    border-top: 4px solid #37475A;
+    border-right: 4px solid #37475A;
+    border-bottom: 4px solid #FEBD69;
+    border-left: 4px solid #37475A;
     background: transparent;
     color: #fff;
     font-size: 20px;
     font-weight: 600;
     transition: .3s ease-in-out;
 }
-.cart button:hover{
-    border-right: 4px solid #449342;
-    border-bottom: 4px solid #0000ff;
-    border-left: 4px solid #0000ff;
-    border-top: 4px solid #449342;
+
+.cart button:hover {
+    border-top: 4px solid #FEBD69;
+    border-right: 4px solid #FEBD69;
+    border-bottom: 4px solid #FEBD69;
+    border-left: 4px solid #FEBD69;
 }
 
 
 /* side bar */
 
-.nav-menu{
+.nav-menu {
     /* background-color: #449342; */
-    background: linear-gradient(140deg,#131A22,#37475A);
+    background: linear-gradient(140deg, #131A22, #37475A);
     /* background-color: #37475A; */
     height: 100vh;
     display: flex;
@@ -115,89 +125,158 @@
     top: 0;
     right: -100%;
     transition: 850ms;
+    z-index: 101;
+    font-size: 15px;
+    padding: 0 20px;
 
 }
-.nav-menu.active{
+
+.nav-menu.active {
     right: 0;
     transition: 350ms;
 }
-.nav-menu-items{
+
+.nav-menu-items {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding: 20px;
 }
-.fa-xmark{
+
+.fa-xmark {
     display: flex;
     justify-content: flex-end;
     width: 100%;
     color: #fff;
-    
+
 }
+
 .profile-image {
     display: flex;
     justify-content: center;
     overflow: hidden;
-
 }
-.profile-image img{
+
+.profile-image img {
     width: 100px;
     height: 100px;
     outline: none;
     background-color: #fff;
     border-radius: 50%;
 }
-.profile-name{
+
+.profile-name {
     display: flex;
     justify-content: center;
     overflow: hidden;
     border-bottom: 2px solid gray;
     color: #fff;
-   
+
 }
-.profile-name h3{
+
+.profile-name h3 {
     font-weight: 600;
+    font-size: 20px;
     text-transform: uppercase;
 }
-.view-profile{
+
+.view-profile {
     text-decoration: none;
     color: #b5b5b5;
 }
-.profile-links{
+
+.profile-links {
     font-weight: 600;
-   text-transform: uppercase;
-   display: flex;
-   gap: 10px;
-   color: #b5b5b5;
+    text-transform: uppercase;
+    display: flex;
+    gap: 10px;
+    color: #b5b5b5;
 }
-.profile-links i{
+
+.profile-links i {
     width: 30px;
 }
-.part{
+
+.part {
     padding-bottom: 10px;
     border-bottom: 2px solid gray;
 }
 
-/* phones */
-@media only screen and (max-width: 600px) {
-    #language {
-        display: none !important;
-        
-    }
-    .cart {
-        display: none !important;
-    }
-    .logo {
-        display: none !important;
-    }
+.nav-bottom-bar-mobile {
+    visibility: hidden;
+    position: fixed;
+    bottom: 0;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    z-index: 102;
 }
 
-/* Add this CSS in your stylesheet or component
- @media only screen and (max-width: 600px) {
-   .nav-right{
+.nav-bottom-bar-mobile div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-bottom-bar-mobile i {
+    color: #000;
+    scale: 1.5;
+}
+
+.search-mobile {
     display: none;
-   }
-  } */
-  
-  
+    background-color: #131A22;
+    padding: 20px 10px 10px;
+}
+.search-mobile img {
+  width: 150px;
+}
+
+.search-mobile-box {
+    border: 1px solid #000;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 40px;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.search-mobile-box input {
+    border: none;
+    outline: none;
+    width: 90%;
+    padding-left: 20px;
+}
+
+.search-mobile-box i {
+    width: 10%;
+    scale: 1.5;
+    text-align: center;
+}
+
+/* phones */
+@media only screen and (max-width: 600px) {
+    .navbar-container {
+        display: none;
+    }
+
+    .nav-bottom-bar-mobile {
+        visibility: visible;
+    }
+
+    .nav-menu {
+        font-size: 15px;
+    }
+
+    .navbar-toggle {
+        display: none;
+    }
+    .search-mobile{
+        display: block;
+    } 
+}

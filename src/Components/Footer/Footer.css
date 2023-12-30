@@ -1,3 +1,49 @@
 .footer-container{
-    background-color: red;
+    padding: 20px;
+    background-color: #37475A;
+    color: #fff;
+    font-size: 10px;
+    overflow: hidden;
+}
+
+
+.footer-container h6{
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.footer-container p{
+    line-height: 2px;
+}
+.footer-container i{
+   font-size: 20px;
+   margin-right: 20px;
+}
+.app-download-links{
+    padding: 20px 0;
+}
+.app-download-links img{
+   width: 300px;
+  
+}
+.copright{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #131A22;
+    padding-top: 10px;
+}
+.copright p{
+    color: #ababab;
+    font-weight: 600;
+}
+
+@media only screen and (max-width: 600px) {
+    .footer-row div{
+        margin-bottom: 20px;
+        margin-left: 20px;
+    }
+    .copright{
+        margin-bottom: 50px;
+    }
 }

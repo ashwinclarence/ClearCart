@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './UserNavbar.css'
 import { TiShoppingCart } from "react-icons/ti";
 import logo from '../../images/Clear cart bg 3.png'
-import defaultuser from '../../images/user.png'
+import defaultuser from '../../images/user.jpeg'
 import { Link } from 'react-router-dom';
 function UserNavbar() {
     const [sidebar, setSidebar] = useState(false)
@@ -20,7 +20,7 @@ function UserNavbar() {
                     <div className="col-md-9 nav-right">
                         <div className="search">
                             <input type="text" placeholder='Search' />
-                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i className="fa-solid fa-magnifying-glass"></i>
                         </div>
                         <div className="language" id='language'>
                             <select name="" id="">
@@ -38,10 +38,17 @@ function UserNavbar() {
                     </div>
                 </div>
             </div>
+            <div className="search-mobile">
+            <img src={logo} alt="" className='logo-mobile' />
+                <div className="search-mobile-box">
+                    <input type="text" placeholder='Search'/>
+                    <i className="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
             <div className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                 <ul className="nav-menu-items">
                     <li className="navbar-toggle">
-                        <i class="fa-solid fa-xmark" onClick={showSidebar}></i>
+                        <i className="fa-solid fa-xmark" onClick={showSidebar}></i>
                     </li>
                     <li className="profile-image">
                         <img src={defaultuser} alt="" />
@@ -50,46 +57,50 @@ function UserNavbar() {
                         <h3>ashwin clarence</h3>
                     </li>
                     <li className="profile-links">
-                        <i class="fa-regular fa-eye"></i>
+                        <i className="fa-regular fa-eye"></i>
                         <Link to='/view-account' className='view-profile'>view Account</Link>
                     </li>
                     <li className="profile-links">
-                        <i class="fa-brands fa-opencart"></i>
+                        <i className="fa-brands fa-opencart"></i>
                         <Link to='/view-orders' className='view-profile'>View Orders</Link>
                     </li>
                     <li className="profile-links">
-                        <i class="fa-solid fa-people-arrows"></i>
+                        <i className="fa-solid fa-people-arrows"></i>
                         <Link to='/' className='view-profile'>Switch Account</Link>
                     </li>
                     <li className="profile-links">
-                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <i className="fa-solid fa-right-from-bracket"></i>
                         <Link to='/' className='view-profile'>logout</Link>
                     </li>
                     <li className="profile-links part">
-                        <i class="fa-solid fa-right-to-bracket"></i>
+                        <i className="fa-solid fa-right-to-bracket"></i>
                         <Link to='/login' className='view-profile'>login</Link>
                     </li>
                     <li className="profile-links">
-                        <i class="fa-solid fa-toggle-off"></i>
+                        <i className="fa-solid fa-toggle-off"></i>
                         <Link to='/' className='view-profile'>Switch theme</Link>
                     </li>
                     <li className="profile-links">
-                        <i class="fa-solid fa-globe"></i>
+                        <i className="fa-solid fa-globe"></i>
                         <Link to='/' className='view-profile'>Change Location</Link>
                     </li>
                     <li className="profile-links part">
-                        <i class="fa-solid fa-language"></i>
+                        <i className="fa-solid fa-language"></i>
                         <Link to='/' className='view-profile'>Change Language</Link>
                     </li>
                     <li className="profile-links">
-                        <i class="fa-solid fa-gear"></i>
+                        <i className="fa-solid fa-gear"></i>
                         <Link to='/' className='view-profile'>Settings</Link>
                     </li>
-
-
-
                 </ul>
             </div>
+            <div className="nav-bottom-bar-mobile container-fluid">
+                 <div className="col-md-3"><i className="fa-solid fa-house"></i></div>
+                 <div className="col-md-3"><i className="fa-solid fa-magnifying-glass"></i></div>
+                 <div className="col-md-3"><i className="fa-solid fa-cart-shopping"></i></div>
+                 <div className="col-md-3" onClick={showSidebar}><i className="fa-solid fa-bars"></i></div>
+            </div>
+               
         </>
     )
 }
