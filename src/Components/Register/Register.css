@@ -1,0 +1,144 @@
+.register-form-container {
+    /* background: linear-gradient(140deg, #131A22, #37475A); */
+    background: url('../../images/preload3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.register-form {
+    position: relative;
+    background-color: #131A22;
+    border-radius: 10px;
+    height: 550px;
+    width: 800px;
+    overflow: hidden;
+}
+
+.register-left-form {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 50%;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.register-right-form {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    width: 50%;
+    padding: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-form img {
+  width: 200px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.register-form input {
+    width: 90%;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    color: #000000;
+}
+.register-form select {
+    width: 90%;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    color: #000000;
+}
+.register-form label {
+   margin-top: 20px;
+}
+
+.register-form button {
+    width: 30%;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    background-color: #FEBD69;
+    font-weight: 700;
+    margin-top: 40px;
+}
+
+.register-form button:hover {
+    background-color: #ffaf46;
+
+}
+
+.back-home {
+    text-decoration: none;
+    color: #fff;
+}
+.register-form p {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.register-profile-image{
+    width: 500px;
+    background-color: #fff;
+}
+@media only screen and (max-width: 800px) {
+    .register-form-container {
+        background: url('../../images/loginmobilebg2.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 150vh;
+        /* filter: blur(4px);
+        -webkit-filter: blur(4px); */
+    }
+    .register-form{
+        background: transparent;
+        height: 150vh;
+    }
+    .register-left-form {
+        position: relative;
+        top: 10px;
+        width: 100%;
+    }
+    
+    .register-right-form {
+        position: relative;
+       left: 0;
+        top: 0;
+        width: 100%;
+    }
+    
+    .register-form input {
+        width: 100%;
+        background: transparent;
+        border-bottom: 2px solid rgb(255, 255, 255);
+        color: #fff;
+       
+    }
+    .register-form select {
+        width: 100%;
+       background: transparent;
+       border-bottom: 2px solid rgb(255, 255, 255);
+       color: #fff;
+    }
+    .register-form option{
+        background-color: #131A22;
+    }
+    
+   
+}

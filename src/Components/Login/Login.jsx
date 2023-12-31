@@ -7,7 +7,6 @@ function Login() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   return (
-
     <div className='container-fluid login-form-container'>
       <div className="row login-form">
         <div className="left-form">
