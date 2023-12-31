@@ -1,3 +1,125 @@
 .sell-product-container{
-    background-color: red;
+    height: 120vh;
+ overflow: hidden;
+ /* background: url('../../images/preload3.jpg');
+ background-size: cover;
+ background-position: center;
+ background-repeat: no-repeat; */
+ background-color: #e4e4e4;
+}
+.sell-product-row{
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.left-sell-product{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    height: 120vh;
+}
+.left-sell-product input{
+    width: 90%;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding-left: 10px;
+    background: transparent;
+    border-bottom: 2px solid #000000;
+}
+#productLocation, #productCategory{
+    width: 90%;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding-left: 10px;
+    background: transparent;
+    border-bottom: 2px solid #000000;
+}
+.left-sell-product option{
+   background-color: #e4e4e4;
+}
+.left-sell-product label{
+    width: 90%;
+    margin-top: 20px;
+    color: #000000;
+    font-weight: 600;
+}
+.left-sell-product textarea{
+    width: 90%;
+    resize: none;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background: transparent;
+    border: 2px solid #000000;
+ }
+.right-sell-product{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    height: 120vh;
+}
+.right-sell-product label{
+   width: 90%;
+   margin-top: 20px;
+   font-weight: 600;
+}
+.right-sell-product img{
+   width: 30%;
+   margin-top: 20px;
+   resize: none;
+   /* border: 1px solid red; */
+   box-shadow:1px 1px 10px #131A22;
+   border-radius: 20px;
+}
+.right-sell-product input{
+   width: 90%;
+   margin-top: 20px;
+   resize: none;
+   background: transparent;
+   border-radius: 5px;
+   padding-left: 10px;
+   /* border-bottom: 2px solid #000; */
+   
+}
+.pro-submit-action{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.right-sell-product button{
+   width: 30%;
+   margin-top: 20px;
+   border: none;
+   outline: none;
+   background-color: #FEBD69;
+   border-radius: 15px;
+   font-weight: 700;
+   height: 40px;
+}
+.right-sell-product button:hover{
+   background-color: #ffaf46;
+}
+
+.pro-back-home{
+    text-decoration: none;
+    color: #000;
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
 }

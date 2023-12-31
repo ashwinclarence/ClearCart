@@ -1,5 +1,7 @@
+import defaultuser from '../../images/user.jpeg'
 import { useState } from 'react'
 import './SellProduct.css'
+import { Link } from 'react-router-dom'
 function SellProduct() {
     const [proName, setProName] = useState('')
     const [proPrice, setProPrice] = useState(0)
@@ -7,9 +9,10 @@ function SellProduct() {
     const [proCategory, setProCategory] = useState('')
     const [proLocation, setProLocation] = useState('')
     const [proDescription, setProDescription] = useState('')
+    const [proImage, setProImage] = useState('')
     return (
         <div className="sell-product-container container-fluid">
-            <div className="row">
+            <div className="row sell-product-row">
                 <form action="">
                     <div className="left-sell-product">
                         <label htmlFor="productName">Product Name</label>
@@ -39,7 +42,7 @@ function SellProduct() {
                             value={proCompanyName}
                             onChange={(e => { setProCompanyName(e.target.value) })}
                             required />
-                             <label htmlFor="productLocation">Product Location</label>
+                        <label htmlFor="productLocation">Product Location</label>
                         <select
                             name="productLocation"
                             id="productLocation"
@@ -76,7 +79,7 @@ function SellProduct() {
                             <option value="Uttarakhand">Uttarakhand</option>
                             <option value="West Bengal">West Bengal</option>
                         </select>
-                             <label htmlFor="productCategory">Product Category</label>
+                        <label htmlFor="productCategory">Product Category</label>
                         <select
                             name="productCategory"
                             id="productCategory"
@@ -94,19 +97,33 @@ function SellProduct() {
                             <option value="Books">Books</option>
                             <option value="Toys">Toys</option>
                         </select>
-
-                    </div>
-                    <div className="right-sell-product">
                         <label htmlFor="productDescriptionName">Product Description</label>
                         <textarea
                             name="productDescriptionName"
                             id="productDescriptionName"
-                            cols="30"
                             rows="10"
+                            minLength={500}
+                            maxLength={5000}
                             value={proDescription}
                             onChange={(e) => setProDescription(e.target.value)}
                             required></textarea>
-                        <button type='submit'>Submit</button>
+                    </div>
+                    <div className="right-sell-product">
+                        <label htmlFor="">Product Picture</label><br />
+                        {proImage ? <img src={URL.createObjectURL(proImage)} className='product-image-prev' /> : <img src={defaultuser} className='product-image-prev' />}
+                        <input
+                            type="file"
+                            className='product-image'
+                            onChange={(e) => { setProImage(e.target.files[0]) }}
+                            required />
+
+                        <div className="pro-submit-action">
+                        <button type='submit'>Clear</button>
+                        <button type='submit'>Register</button>
+                        </div>
+                     
+
+                        <Link to='/' className='pro-back-home'><p>Go Back</p></Link>
                     </div>
                 </form>
             </div>

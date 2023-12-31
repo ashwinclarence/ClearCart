@@ -46,6 +46,7 @@
   width: 200px;
   padding: 10px;
   margin-bottom: 20px;
+  border-radius: 30px;
 }
 .register-form input {
     width: 90%;
