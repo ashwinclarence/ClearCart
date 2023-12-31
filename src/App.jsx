@@ -5,6 +5,7 @@ import Home from "./Pages/Home";
 import './App.css'
 import LoginPage from "./Pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage";
+import SellProductPage from "./Pages/SellProductPage";
 function App() {
   const [loading, setLoading] = useState(false)
 
@@ -23,6 +24,7 @@ function App() {
               <Route path='/' element={<Home />} ></Route>
               <Route path='/register' element={<RegisterPage />} ></Route>
               <Route path='/login' element={<LoginPage />} ></Route>
+              <Route path='/sell-product' element={<SellProductPage />} ></Route>
             </Routes>
           </Router>
 

@@ -1,13 +1,12 @@
-import React from 'react'
 import Animations from '../Animations/Animations'
 import UserNavbar from '../Components/UserNavbar/UserNavbar'
 import Footer from '../Components/Footer/Footer'
-import AdvertisementBanner from '../Components/AdvertisementBanner/AdvertisementBanner'
+import Posts from '../Components/Posts/Posts'
 function Home() {
   return (
     <Animations>
       <UserNavbar/>
-      <AdvertisementBanner/>
+      <Posts/>
       <Footer/>
     </Animations>
   )

@@ -11,11 +11,10 @@ function AdvertisementBanner() {
         }, 9000);
       }, [imagecount])
   return (
-    <div className="container-fluid banner-container">
+
       <div className="row">
       {imagecount?<img src={adImage1} alt="" id='img1' />:<img src={adImage2} alt="" id='img1' />} 
       </div>
-    </div>
   );
 }
 

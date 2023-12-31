@@ -41,7 +41,10 @@ function UserNavbar() {
             <div className="search-mobile">
             <img src={logo} alt="" className='logo-mobile' />
                 <div className="search-mobile-box">
-                    <input type="text" placeholder='Search'/>
+                    <input 
+                    type="text"
+                    className='mobile-search-box' 
+                    placeholder='search'/>
                     <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
             </div>
@@ -75,6 +78,10 @@ function UserNavbar() {
                     <li className="profile-links part">
                         <i className="fa-solid fa-right-to-bracket"></i>
                         <Link to='/login' className='view-profile'>login</Link>
+                    </li>
+                    <li className="profile-links part">
+                    <i className="fa-solid fa-plus"></i>
+                        <Link to='/sell-product' className='view-profile'>Become a seller</Link>
                     </li>
                     <li className="profile-links">
                         <i className="fa-solid fa-toggle-off"></i>
