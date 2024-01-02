@@ -1,6 +1,6 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 
+// eslint-disable-next-line react/prop-types
 function Animations({ children }) {
   return (
     <motion.div 

@@ -15,7 +15,8 @@ function UserNavbar() {
             <div className='navbar-container container-fluid'>
                 <div className="row">
                     <div className="col-md-3">
-                        <img src={logo} alt="" className='logo' />
+                        <Link to='/'> <img src={logo} alt="" className='logo' /></Link>
+
                     </div>
                     <div className="col-md-9 nav-right">
                         <div className="search">
@@ -39,12 +40,13 @@ function UserNavbar() {
                 </div>
             </div>
             <div className="search-mobile">
-            <img src={logo} alt="" className='logo-mobile' />
+                <Link to='/'>  <img src={logo} alt="" className='logo-mobile' /></Link>
+
                 <div className="search-mobile-box">
-                    <input 
-                    type="text"
-                    className='mobile-search-box' 
-                    placeholder='search'/>
+                    <input
+                        type="text"
+                        className='mobile-search-box'
+                        placeholder='search' />
                     <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
             </div>
@@ -71,17 +73,21 @@ function UserNavbar() {
                         <i className="fa-solid fa-people-arrows"></i>
                         <Link to='/register' className='view-profile'>Switch Account</Link>
                     </li>
-                    <li className="profile-links">
+                    {/* <li className="profile-links">
                         <i className="fa-solid fa-right-from-bracket"></i>
                         <Link to='/' className='view-profile'>logout</Link>
-                    </li>
+                    </li> */}
                     <li className="profile-links part">
                         <i className="fa-solid fa-right-to-bracket"></i>
                         <Link to='/login' className='view-profile'>login</Link>
                     </li>
-                    <li className="profile-links part">
-                    <i className="fa-solid fa-plus"></i>
+                    <li className="profile-links">
+                        <i className="fa-solid fa-plus"></i>
                         <Link to='/sell-product' className='view-profile'>Become a seller</Link>
+                    </li>
+                    <li className="profile-links part">
+                        <i className="fa-solid fa-tags"></i>
+                        <Link to='/sell-product' className='view-profile'>View My Products</Link>
                     </li>
                     <li className="profile-links">
                         <i className="fa-solid fa-toggle-off"></i>
@@ -102,12 +108,12 @@ function UserNavbar() {
                 </ul>
             </div>
             <div className="nav-bottom-bar-mobile container-fluid">
-                 <div className="col-md-3"><i className="fa-solid fa-house"></i></div>
-                 <div className="col-md-3"><i className="fa-solid fa-magnifying-glass"></i></div>
-                 <div className="col-md-3"><i className="fa-solid fa-cart-shopping"></i></div>
-                 <div className="col-md-3" onClick={showSidebar}><i className="fa-solid fa-bars"></i></div>
+                <div className="col-md-3"><i className="fa-solid fa-house"></i></div>
+                <div className="col-md-3"><i className="fa-solid fa-magnifying-glass"></i></div>
+                <div className="col-md-3"><i className="fa-solid fa-cart-shopping"></i></div>
+                <div className="col-md-3" onClick={showSidebar}><i className="fa-solid fa-bars"></i></div>
             </div>
-               
+
         </>
     )
 }

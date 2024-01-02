@@ -6,6 +6,7 @@ import './App.css'
 import LoginPage from "./Pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage";
 import SellProductPage from "./Pages/SellProductPage";
+import UserProfilePage from "./Pages/UserProfilePage";
 function App() {
   const [loading, setLoading] = useState(false)
 
@@ -13,7 +14,7 @@ function App() {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-    }, 1000);
+    }, 4000);
   }, [])
   return (
     <div className='app'>
@@ -25,6 +26,7 @@ function App() {
               <Route path='/register' element={<RegisterPage />} ></Route>
               <Route path='/login' element={<LoginPage />} ></Route>
               <Route path='/sell-product' element={<SellProductPage />} ></Route>
+              <Route path='/view-account' element={<UserProfilePage />} ></Route>
             </Routes>
           </Router>
 
