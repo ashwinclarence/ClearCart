@@ -87,7 +87,7 @@ function UserNavbar() {
                     </li>
                     <li className="profile-links part">
                         <i className="fa-solid fa-tags"></i>
-                        <Link to='/sell-product' className='view-profile'>View My Products</Link>
+                        <Link to='/view-my-product' className='view-profile'>View My Products</Link>
                     </li>
                     <li className="profile-links">
                         <i className="fa-solid fa-toggle-off"></i>

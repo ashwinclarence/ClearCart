@@ -119,7 +119,7 @@ function SellProduct() {
 
                         <div className="pro-submit-action">
                         <button type='submit'>Clear</button>
-                        <button type='submit'>Register</button>
+                        <button type='submit'>Submit</button>
                         </div>
                      
 

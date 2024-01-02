@@ -7,6 +7,7 @@ import LoginPage from "./Pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage";
 import SellProductPage from "./Pages/SellProductPage";
 import UserProfilePage from "./Pages/UserProfilePage";
+import UserViewProductPage from "./Pages/UserViewProductPage";
 function App() {
   const [loading, setLoading] = useState(false)
 
@@ -27,6 +28,7 @@ function App() {
               <Route path='/login' element={<LoginPage />} ></Route>
               <Route path='/sell-product' element={<SellProductPage />} ></Route>
               <Route path='/view-account' element={<UserProfilePage />} ></Route>
+              <Route path='/view-my-product' element={<UserViewProductPage/>} ></Route>
             </Routes>
           </Router>
 

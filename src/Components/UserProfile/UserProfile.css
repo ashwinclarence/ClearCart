@@ -12,6 +12,10 @@
     padding: 40px 10px;
     font-size: 12px;
 }
+.user-profile-name{
+    padding-top: 10px;
+    text-align: center;
+}
 
 .left-user-profile .profile-img {
     border-radius: 50%;
@@ -51,75 +55,14 @@
 
 .right-user-profile {
     overflow: hidden;
-    padding: 40px 10px;
+ 
 }
 
-.right-user-profile-row {
-    display: flex;
-    justify-content: space-evenly;
-}
 
-.profile-product-container {
-    background-color: #ffffff;
-    border: 2px solid #a6a6a6;
-    border-radius: 20px;
-    overflow: hidden;
-    height: 320px;
-}
-
-.profile-product-img-box {
-    background-color: #fff;
-    height: 200px;
-}
-
-.profile-product-img-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.profile-product-description-box {
-    height: 100px;
-    padding: 10px;
-}
-
-.profile-product-description-box h4 {
-    color: #000;
-    font-weight: 700;
-    font-size: 14px;
-    text-transform: capitalize;
-}
-
-.profile-product-description-box h6 {
-    color: #000;
-    font-weight: 800;
-    font-size: 14px;
-}
-
-.profile-product-description-box h5 {
-    color: #000;
-    font-weight: 700;
-    font-size: 10px;
-    text-transform: capitalize;
-}
-
-.profile-mobile-view-product {
-    display: none;
-}
-
-.profile-other-view-product {
-    display: block;
-}
 
 @media only screen and (max-width: 800px) {
     .right-user-profile {
         padding: 20px;
-    }
-    .profile-mobile-view-product {
-        display: block;
-    }
-    .profile-other-view-product {
-        display: none;
     }
     .left-user-profile .profile-img {
         border-radius: 50%;
