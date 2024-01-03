@@ -6,9 +6,14 @@ import defaultuser from '../../images/user.jpeg'
 import { Link } from 'react-router-dom';
 function UserNavbar() {
     const [sidebar, setSidebar] = useState(false)
+    const [theme, setTheme] = useState(false)
     // function toggle sidebar
     const showSidebar = () => {
         setSidebar(!sidebar)
+    }
+    const changeTheme=(e)=>{
+        e.preventDefault()
+        setTheme(!theme)
     }
     return (
         <>
@@ -23,20 +28,28 @@ function UserNavbar() {
                             <input type="text" placeholder='Search' />
                             <i className="fa-solid fa-magnifying-glass"></i>
                         </div>
-                        <div className="language" id='language'>
+
+                        {/* <div className="language" id='language'>
                             <select name="" id="">
                                 <option value="English">English</option>
                                 <option value="Malayalam">Malayalam</option>
                                 <option value="Hindi">Hindi</option>
                             </select>
-                        </div>
+                        </div> */}
                         <div className="cart">
                             <button><TiShoppingCart />cart</button>
                         </div>
                         <div className="profile">
                             <img src={defaultuser} alt="" onClick={showSidebar} />
                         </div>
+                        <div className="theme">
+                            <div onClick={changeTheme}>
+                                {theme?  <i className="fa-solid fa-toggle-on"></i>: <i className="fa-solid fa-toggle-off"></i>}
+                            </div>
+                            
+                        </div>
                     </div>
+
                 </div>
             </div>
             <div className="search-mobile">
@@ -88,10 +101,6 @@ function UserNavbar() {
                     <li className="profile-links part">
                         <i className="fa-solid fa-tags"></i>
                         <Link to='/view-my-product' className='view-profile'>View My Products</Link>
-                    </li>
-                    <li className="profile-links">
-                        <i className="fa-solid fa-toggle-off"></i>
-                        <Link to='/' className='view-profile'>Switch theme</Link>
                     </li>
                     <li className="profile-links">
                         <i className="fa-solid fa-globe"></i>
