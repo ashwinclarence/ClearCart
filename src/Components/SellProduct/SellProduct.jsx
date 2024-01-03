@@ -4,7 +4,7 @@ import './SellProduct.css'
 import { Link } from 'react-router-dom'
 function SellProduct() {
     const [proName, setProName] = useState('')
-    const [proPrice, setProPrice] = useState(0)
+    const [proPrice, setProPrice] = useState('')
     const [proCompanyName, setProCompanyName] = useState('')
     const [proCategory, setProCategory] = useState('')
     const [proLocation, setProLocation] = useState('')
@@ -12,9 +12,9 @@ function SellProduct() {
     const [proImage, setProImage] = useState('')
     return (
         <div className="sell-product-container container-fluid">
-            <div className="row sell-product-row">
-                <form action="">
-                    <div className="left-sell-product">
+            <form action="">
+                <div className="row sell-product-row">
+                    <div className="col-md-6 left-sell-product">
                         <label htmlFor="productName">Product Name</label>
                         <input
                             type="text"
@@ -108,7 +108,7 @@ function SellProduct() {
                             onChange={(e) => setProDescription(e.target.value)}
                             required></textarea>
                     </div>
-                    <div className="right-sell-product">
+                    <div className="col-md-6 right-sell-product">
                         <label htmlFor="">Product Picture</label><br />
                         {proImage ? <img src={URL.createObjectURL(proImage)} className='product-image-prev' /> : <img src={defaultuser} className='product-image-prev' />}
                         <input
@@ -118,15 +118,13 @@ function SellProduct() {
                             required />
 
                         <div className="pro-submit-action">
-                        <button type='submit'>Clear</button>
-                        <button type='submit'>Submit</button>
+                            {/* <button type='submit'>Clear</button> */}
+                            <button type='submit'>Submit</button>
                         </div>
-                     
-
                         <Link to='/' className='pro-back-home'><p>Go Back</p></Link>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     )
 }

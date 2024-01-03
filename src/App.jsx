@@ -8,6 +8,7 @@ import RegisterPage from "./Pages/RegisterPage";
 import SellProductPage from "./Pages/SellProductPage";
 import UserProfilePage from "./Pages/UserProfilePage";
 import UserViewProductPage from "./Pages/UserViewProductPage";
+import UserCartPage from "./Pages/UserCartPage";
 function App() {
   const [loading, setLoading] = useState(false)
 
@@ -29,6 +30,7 @@ function App() {
               <Route path='/sell-product' element={<SellProductPage />} ></Route>
               <Route path='/view-account' element={<UserProfilePage />} ></Route>
               <Route path='/view-my-product' element={<UserViewProductPage/>} ></Route>
+              <Route path='/view-cart' element={<UserCartPage/>} ></Route>
             </Routes>
           </Router>
 

@@ -67,7 +67,7 @@ function UserNavbar() {
                     </li>
                     <li className="profile-links">
                         <i className="fa-brands fa-opencart"></i>
-                        <Link to='/view-orders' className='view-profile'>View Orders</Link>
+                        <Link to='/view-cart' className='view-profile'>View Orders</Link>
                     </li>
                     <li className="profile-links">
                         <i className="fa-solid fa-people-arrows"></i>
@@ -110,7 +110,7 @@ function UserNavbar() {
             <div className="nav-bottom-bar-mobile container-fluid">
                 <div className="col-md-3"><i className="fa-solid fa-house"></i></div>
                 <div className="col-md-3"><i className="fa-solid fa-magnifying-glass"></i></div>
-                <div className="col-md-3"><i className="fa-solid fa-cart-shopping"></i></div>
+                <div className="col-md-3"><Link to='/view-cart'><i className="fa-solid fa-cart-shopping"></i></Link></div>
                 <div className="col-md-3" onClick={showSidebar}><i className="fa-solid fa-bars"></i></div>
             </div>
 
