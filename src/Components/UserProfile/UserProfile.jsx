@@ -1,6 +1,5 @@
 import './UserProfile.css'
 import pic1 from '../../images/user.jpeg'
-import UserViewProducts from '../UserViewProducts/UserViewProducts'
 import UserProfileChart from '../UserProfileChart/UserProfileChart'
 function UserProfile() {
   
@@ -26,7 +25,6 @@ function UserProfile() {
                         <UserProfileChart/>
                     </div>
                 </div>
-                <UserViewProducts/>
             </div>
         </div>
     )

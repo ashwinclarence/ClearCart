@@ -9,6 +9,7 @@ import SellProductPage from "./Pages/SellProductPage";
 import UserProfilePage from "./Pages/UserProfilePage";
 import UserViewProductPage from "./Pages/UserViewProductPage";
 import UserCartPage from "./Pages/UserCartPage";
+import useLocalStorage from "use-local-storage";
 function App() {
   const [loading, setLoading] = useState(false)
 
@@ -16,10 +17,16 @@ function App() {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-    }, 4000);
+    }, 1000);
   }, [])
+  const changeTheme=(e)=>{
+    e.preventDefault()
+    setTheme(!theme)
+
+}
+  const [theme, setTheme] = useLocalStorage("theme",false)
   return (
-    <div className='app'>
+    <div className='app' data-theme={theme? "dark":"light"}>
       {
         loading ? <PreLoadPage /> :
           <Router>

@@ -1,0 +1,20 @@
+:root{
+    --bg-color:#ffffff;
+    --text-color:#000000;
+    --border-color:#7c7c7c;
+    --main-color:#131A22;
+    --sub-color:#FEBD69;
+    --sub-color-hover:#ffaf46;
+    --higlight-color:#37475A;
+    --bg-secondary-color:#fcfcfc;
+  }
+  [data-theme='dark']{
+    --bg-color:#0f0f0f;
+    --text-color:#ffffff;
+    --border-color:#7d7d7d;
+    --black-color:#000000;
+    --main-color:#05090e;
+    --sub-color:#FEBD69;
+    --higlight-color:#0e1217;
+    --bg-secondary-color:#222222;
+  }

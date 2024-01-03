@@ -1,34 +1,32 @@
-import { useState } from 'react'
 import './UserNavbar.css'
-import { TiShoppingCart } from "react-icons/ti";
 import logo from '../../images/Clear cart bg 3.png'
 import defaultuser from '../../images/user.jpeg'
+import { useState } from 'react'
+import { TiShoppingCart } from "react-icons/ti";
 import { Link } from 'react-router-dom';
 function UserNavbar() {
     const [sidebar, setSidebar] = useState(false)
-    const [theme, setTheme] = useState(false)
+    
     // function toggle sidebar
     const showSidebar = () => {
         setSidebar(!sidebar)
     }
-    const changeTheme=(e)=>{
-        e.preventDefault()
-        setTheme(!theme)
-    }
+   
     return (
         <>
             <div className='navbar-container container-fluid'>
                 <div className="row">
-                    <div className="col-md-3">
+                    <div className="col-md-4">
                         <Link to='/'> <img src={logo} alt="" className='logo' /></Link>
 
                     </div>
-                    <div className="col-md-9 nav-right">
-                        <div className="search">
+                    <div className="col-md-4">
+                    <div className="search">
                             <input type="text" placeholder='Search' />
                             <i className="fa-solid fa-magnifying-glass"></i>
                         </div>
-
+                    </div>
+                    <div className="col-md-4 nav-right">
                         {/* <div className="language" id='language'>
                             <select name="" id="">
                                 <option value="English">English</option>
@@ -37,7 +35,7 @@ function UserNavbar() {
                             </select>
                         </div> */}
                         <div className="cart">
-                            <button><TiShoppingCart />cart</button>
+                            <button><TiShoppingCart /> cart</button>
                         </div>
                         <div className="profile">
                             <img src={defaultuser} alt="" onClick={showSidebar} />

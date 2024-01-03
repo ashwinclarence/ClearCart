@@ -1,5 +1,6 @@
 .user-profile-container {
     overflow: hidden;
+    background-color: var(--bg-color);
 }
 
 .user-profile-row {
@@ -7,7 +8,7 @@
 }
 
 .left-user-profile {
-    color: #000000;
+    color: var(--text-color);
     overflow: hidden;
     padding: 40px 10px;
     font-size: 12px;
@@ -40,13 +41,13 @@
     border: none;
     outline: none;
     font-weight: 700;
-    background-color: #FEBD69;
+    background-color: var(--sub-color);
     transition: .3s ease-in-out;
     color: #000;
 }
 
 .left-user-profile button:hover {
-    background-color: #ffac3f;
+    background-color: var(--sub-color-hover);
 }
 
 .profile-icon {

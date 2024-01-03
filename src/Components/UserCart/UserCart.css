@@ -1,3 +1,7 @@
+.user-cart-container{
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
 .user-cart-row {
     overflow: hidden;
     min-height: 100vh;
@@ -9,7 +13,8 @@
 }
 
 .cart-item-row {
-    border: 1px solid #c1c1c1;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary-color);
     border-radius: 10px;
     margin-bottom: 20px;
     overflow: hidden;
@@ -51,13 +56,13 @@
     margin-left: 10px;
 }
 .sold-by{
-    color: #494949;
+    color: var( --border-color);
 }
 .eligible{
-    color: #757474;
+    color: var( --border-color);
 }
 
-/* Chrome, Safari, Edge, Opera */
+/* display none the number increment and decrement dubbton in input type=number*/
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -68,6 +73,7 @@ input::-webkit-inner-spin-button {
 
 .right-user-cart {
     font-size: 14px;
+    padding-top: 30px;
 }
 
 .order-summary {
@@ -75,6 +81,9 @@ input::-webkit-inner-spin-button {
     flex-direction: column;
     align-items: center;
     padding-top: 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary-color);
+    border-radius: 10px;
 }
 
 .order-summary h5 {
@@ -109,6 +118,8 @@ input::-webkit-inner-spin-button {
     display: none;
     margin-top: 30px;
     padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
 }
 
 .right-user-cart label {
@@ -120,7 +131,9 @@ input::-webkit-inner-spin-button {
 
 .right-user-cart input {
     width: 100%;
-    border: 1px solid #c1c1c1;
+    border:none;
+    background-color: var(--bg-secondary-color);
+    color: var(--text-color);
     outline: none;
     border-radius: 5px;
     height: 30px;
@@ -132,7 +145,7 @@ input::-webkit-inner-spin-button {
     outline: none;
     border: none;
     border-radius: 5px;
-    background-color: #FEBD69;
+    background-color: var(--sub-color);
     font-weight: 700;
     height: 30px;
     margin-top: 20px;
@@ -141,7 +154,9 @@ input::-webkit-inner-spin-button {
 #shipping-address {
     width: 100%;
     resize: none;
-    border: 1px solid #c1c1c1;
+    border:none;
+    background-color: var(--bg-secondary-color);
+    color: var(--text-color);
     outline: none;
     border-radius: 5px;
     padding: 10px;

@@ -1,7 +1,8 @@
 .sell-product-container {
     overflow: hidden;
-    background-color: #e4e4e4;
+    background-color: var(--bg-secondary-color);
     padding: 20px;
+    color: var(--text-color);
 }
 
 .left-sell-product {
@@ -9,6 +10,7 @@
     flex-direction: column;
     align-items: center;
     overflow: hidden;
+    caret-color: var(--text-color);
 }
 
 .left-sell-product input {
@@ -19,7 +21,8 @@
     border-radius: 5px;
     padding-left: 10px;
     background: transparent;
-    border-bottom: 2px solid #000000;
+    color: var(--text-color);
+    border-bottom: 2px solid var(--text-color);
 }
 
 #productLocation,
@@ -31,17 +34,18 @@
     border-radius: 5px;
     padding-left: 10px;
     background: transparent;
-    border-bottom: 2px solid #000000;
+    color: var(--text-color);
+    border-bottom: 2px solid var(--text-color);
 }
 
 .left-sell-product option {
-    background-color: #e4e4e4;
+    background-color: var(--border-color);
 }
 
 .left-sell-product label {
     width: 90%;
     margin-top: 20px;
-    color: #000000;
+    color: var(--text-color);
     font-weight: 600;
 }
 
@@ -53,7 +57,8 @@
     outline: none;
     border-radius: 5px;
     background: transparent;
-    border: 2px solid #000000;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
 }
 
 .right-sell-product {
@@ -73,7 +78,7 @@
     width: 30%;
     margin-top: 20px;
     resize: none;
-    box-shadow: 1px 1px 10px #131A22;
+    box-shadow: 1px 1px 10px var(--main-color);
     border-radius: 20px;
 }
 
@@ -99,29 +104,30 @@
     margin-top: 20px;
     border: none;
     outline: none;
-    background-color: #FEBD69;
+    background-color:var( --sub-color);
     border-radius: 15px;
     font-weight: 700;
     height: 40px;
 }
 
 .right-sell-product button:hover {
-    background-color: #ffaf46;
+    background-color:var(--sub-color-hover);
 }
 
 .pro-back-home {
     text-decoration: none;
-    color: #000;
+    color:var(--text-color);
     margin-top: 30px;
+}
+::placeholder {
+    color: var(--text-color);
 }
 
 @media only screen and (max-width: 800px) {
     .sell-product-container {
-        color: #000;
+        color: var(--text-color);
     }
 
-    ::placeholder {
-        color: #000;
-    }
+   
 
 }
