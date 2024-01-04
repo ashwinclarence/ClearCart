@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route,BrowserRouter as Router, Routes } from "react-router-dom";
 import PreLoadPage from "./Pages/PreLoadPage";
 import Home from "./Pages/Home";
@@ -10,23 +10,21 @@ import UserProfilePage from "./Pages/UserProfilePage";
 import UserViewProductPage from "./Pages/UserViewProductPage";
 import UserCartPage from "./Pages/UserCartPage";
 import useLocalStorage from "use-local-storage";
+export const Context=React.createContext()
 function App() {
   const [loading, setLoading] = useState(false)
-
+  const [theme, setTheme] = useLocalStorage("theme",false)
   useEffect(() => {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
     }, 1000);
   }, [])
-  const changeTheme=(e)=>{
-    e.preventDefault()
-    setTheme(!theme)
 
-}
-  const [theme, setTheme] = useLocalStorage("theme",false)
   return (
-    <div className='app' data-theme={theme? "dark":"light"}>
+    <Context.Provider value={[theme,setTheme]}>
+    <div className='app' data-theme={theme?"dark":"light"}>
+     
       {
         loading ? <PreLoadPage /> :
           <Router>
@@ -43,6 +41,7 @@ function App() {
 
       }
     </div>
+    </Context.Provider>
   )
 }
 

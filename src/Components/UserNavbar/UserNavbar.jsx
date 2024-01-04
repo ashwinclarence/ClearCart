@@ -1,19 +1,23 @@
 import './UserNavbar.css'
 import logo from '../../images/Clear cart bg 3.png'
 import defaultuser from '../../images/user.jpeg'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { TiShoppingCart } from "react-icons/ti";
 import { Link } from 'react-router-dom';
+import { Context } from '../../App';
 function UserNavbar() {
     const [sidebar, setSidebar] = useState(false)
-    
+    const [theme, setTheme] = useContext(Context)
     // function toggle sidebar
     const showSidebar = () => {
         setSidebar(!sidebar)
     }
-   
+   const changeTheme=()=>{
+    setTheme(!theme)
+   }
     return (
-        <>
+        <span data-theme={theme?"dark":"light"}>
+         
             <div className='navbar-container container-fluid'>
                 <div className="row">
                     <div className="col-md-4">
@@ -121,7 +125,7 @@ function UserNavbar() {
                 <div className="col-md-3" onClick={showSidebar}><i className="fa-solid fa-bars"></i></div>
             </div>
 
-        </>
+        </span>
     )
 }
 
