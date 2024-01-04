@@ -1,0 +1,35 @@
+.admin-trending-chart-container{
+    padding: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+.admin-trending-chart-inner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    margin: 10px;
+    width: 300px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: var(--bg-secondary-color);
+}
+.admin-category-image{
+    width: 200px;
+}
+.admin-category-list{
+    font-size: 14px;
+    font-weight: 700;
+   
+}
+.admin-category-list-name{
+    font-weight: 600;
+    font-size: 12px;
+    text-align: justify;
+}
