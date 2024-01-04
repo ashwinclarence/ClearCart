@@ -1,0 +1,25 @@
+.user-profile-chart-container{
+    overflow: hidden;
+}
+.user-profile-chart-container h2{
+    display: flex;
+    justify-content: center;
+}
+.user-profile-chart-other{
+    display: block;
+    margin: auto;
+}
+.user-profile-chart-mobile{
+    display: none;
+    margin: auto;
+}
+@media only screen and (max-width: 800px) {
+    .user-profile-chart-mobile{
+        display: block;
+        margin: auto;
+    }
+    .user-profile-chart-other{
+        display: none;
+        margin: auto;
+    }
+}

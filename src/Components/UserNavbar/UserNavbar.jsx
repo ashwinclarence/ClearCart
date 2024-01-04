@@ -12,12 +12,12 @@ function UserNavbar() {
     const showSidebar = () => {
         setSidebar(!sidebar)
     }
-   const changeTheme=()=>{
-    setTheme(!theme)
-   }
+    const changeTheme = () => {
+        setTheme(!theme)
+    }
     return (
-        <span data-theme={theme?"dark":"light"}>
-         
+        <span data-theme={theme ? "dark" : "light"}>
+
             <div className='navbar-container container-fluid'>
                 <div className="row">
                     <div className="col-md-4">
@@ -25,7 +25,7 @@ function UserNavbar() {
 
                     </div>
                     <div className="col-md-4">
-                    <div className="search">
+                        <div className="search">
                             <input type="text" placeholder='Search' />
                             <i className="fa-solid fa-magnifying-glass"></i>
                         </div>
@@ -46,9 +46,9 @@ function UserNavbar() {
                         </div>
                         <div className="theme">
                             <div onClick={changeTheme}>
-                                {theme?  <i className="fa-solid fa-toggle-on"></i>: <i className="fa-solid fa-toggle-off"></i>}
+                                {theme ? <i className="fa-solid fa-toggle-on"></i> : <i className="fa-solid fa-toggle-off"></i>}
                             </div>
-                            
+
                         </div>
                     </div>
 
@@ -88,10 +88,10 @@ function UserNavbar() {
                         <i className="fa-solid fa-people-arrows"></i>
                         <Link to='/register' className='view-profile'>Switch Account</Link>
                     </li>
-                    {/* <li className="profile-links">
+                    <li className="profile-links">
                         <i className="fa-solid fa-right-from-bracket"></i>
                         <Link to='/' className='view-profile'>logout</Link>
-                    </li> */}
+                    </li>
                     <li className="profile-links part">
                         <i className="fa-solid fa-right-to-bracket"></i>
                         <Link to='/login' className='view-profile'>login</Link>
@@ -119,9 +119,9 @@ function UserNavbar() {
                 </ul>
             </div>
             <div className="nav-bottom-bar-mobile container-fluid">
-                <div className="col-md-3"><i className="fa-solid fa-house"></i></div>
-                <div className="col-md-3"><i className="fa-solid fa-magnifying-glass"></i></div>
+                <div className="col-md-3"><Link to='/'><i className="fa-solid fa-house"></i></Link></div>
                 <div className="col-md-3"><Link to='/view-cart'><i className="fa-solid fa-cart-shopping"></i></Link></div>
+                <div className="col-md-3" onClick={changeTheme}>{theme ? <i className="fa-solid fa-toggle-on"></i> : <i className="fa-solid fa-toggle-off"></i>}</div>
                 <div className="col-md-3" onClick={showSidebar}><i className="fa-solid fa-bars"></i></div>
             </div>
 

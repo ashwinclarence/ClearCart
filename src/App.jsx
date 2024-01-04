@@ -13,7 +13,8 @@ import useLocalStorage from "use-local-storage";
 export const Context=React.createContext()
 function App() {
   const [loading, setLoading] = useState(false)
-  const [theme, setTheme] = useLocalStorage("theme",false)
+  const Preferences=window.matchMedia("(prefers-color-scheme:dark)").matches;
+  const [theme, setTheme] = useLocalStorage("theme",Preferences)
   useEffect(() => {
     setLoading(true)
     setTimeout(() => {
