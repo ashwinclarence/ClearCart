@@ -14,11 +14,11 @@ function UserProfileChart() {
     series: [
       {
         name: "Review others gave to you",
-        data: [30, 40, 45, 50, 49]
+        data: [30, 40, 45, 50, 49],
       },
       {
         name: "Review you gave to others",
-        data: [3, 80, 34, 75, 85]
+        data: [3, 80, 34, 75, 85],
       }
     ]
   })
@@ -26,7 +26,7 @@ function UserProfileChart() {
   return (
     <div className='user-profile-chart-container container-fluid'>
       <div className="row user-profile-chart-row">
-        <h2>Reviews</h2>
+        <h4>Reviews</h4>
         <div className="user-profile-chart-other">
           <Chart
             options={state.options}

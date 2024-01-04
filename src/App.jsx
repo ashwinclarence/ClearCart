@@ -10,6 +10,8 @@ import UserProfilePage from "./Pages/UserProfilePage";
 import UserViewProductPage from "./Pages/UserViewProductPage";
 import UserCartPage from "./Pages/UserCartPage";
 import useLocalStorage from "use-local-storage";
+import ViewPostsPage from "./Pages/ViewPostsPage";
+import AdminHome from "./Pages/AdminHome";
 export const Context=React.createContext()
 function App() {
   const [loading, setLoading] = useState(false)
@@ -37,6 +39,9 @@ function App() {
               <Route path='/view-account' element={<UserProfilePage />} ></Route>
               <Route path='/view-my-product' element={<UserViewProductPage/>} ></Route>
               <Route path='/view-cart' element={<UserCartPage/>} ></Route>
+              <Route path='/view-post' element={<ViewPostsPage/>} ></Route>
+              <Route path='/admin' element={<AdminHome/>} ></Route>
+              
             </Routes>
           </Router>
 

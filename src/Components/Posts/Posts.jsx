@@ -15,6 +15,7 @@ import c6 from '../../images/pim/c6.PNG'
 import c7 from '../../images/pim/c7.PNG'
 import c8 from '../../images/pim/c8.PNG'
 import c9 from '../../images/pim/c9.PNG'
+import { Link } from 'react-router-dom'
 function Posts() {
   let products = [
     {
@@ -111,14 +112,16 @@ function Posts() {
         {
           products.map((obj, index) => {
             return (
+
               <div className="col-md-2 product-container m-2" key={index}>
+                <Link to='/view-post' className='post-link'>
                 <div className="product-img-box">
                   <img src={obj.image} alt="" />
                 </div>
                 <div className="product-description-box">
                   <span className='mobile-view-product'>
                     {obj.companyName.length >= 30 ? <h5>{obj.companyName.slice(0, 55)}...</h5> : <h5>{obj.companyName}</h5>}
-                    {obj.name.length >= 50 ? <h4 >{obj.name.slice(0, 40)}....</h4> : <h4>{obj.name}</h4>}
+                    {obj.name.length >= 50 ? <h4>{obj.name.slice(0, 40)}....</h4> : <h4>{obj.name}</h4>}
                     <h6><i className="fa-solid fa-indian-rupee-sign"></i> {obj.price.toLocaleString()}</h6>
                     {obj.description.length >= 50 ? <h5 >{obj.description.slice(0, 40)}....</h5> : <h5>{obj.description}</h5>}
                   </span>
@@ -129,6 +132,7 @@ function Posts() {
                     {obj.description.length >= 35 ? <h5 >{obj.description.slice(0, 35)}....</h5> : <h5>{obj.description}</h5>}
                   </span>
                 </div>
+              </Link>
               </div>
             )
           })

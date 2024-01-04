@@ -10,6 +10,7 @@
 .left-user-cart {
     font-size: 14px;
     padding: 30px;
+   
 }
 
 .cart-item-row {
@@ -119,6 +120,7 @@ input::-webkit-inner-spin-button {
     margin-top: 30px;
     padding: 10px;
     border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary-color);
     border-radius: 10px;
 }
 
@@ -132,7 +134,7 @@ input::-webkit-inner-spin-button {
 .right-user-cart input {
     width: 100%;
     border:none;
-    background-color: var(--bg-secondary-color);
+ background: var(--bg-color);
     color: var(--text-color);
     outline: none;
     border-radius: 5px;
@@ -155,7 +157,7 @@ input::-webkit-inner-spin-button {
     width: 100%;
     resize: none;
     border:none;
-    background-color: var(--bg-secondary-color);
+    background: var(--bg-color);
     color: var(--text-color);
     outline: none;
     border-radius: 5px;

@@ -1,7 +1,7 @@
 .user-profile-chart-container{
     overflow: hidden;
 }
-.user-profile-chart-container h2{
+.user-profile-chart-container h4{
     display: flex;
     justify-content: center;
 }

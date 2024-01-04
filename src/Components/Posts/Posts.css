@@ -12,6 +12,7 @@
     border-radius: 20px;
     overflow: hidden;
     height: 350px;
+    
 }
 .product-img-box{
     background-color: #fff;
@@ -31,11 +32,13 @@
     font-weight: 600;
     font-size: 15px;
     text-transform: capitalize;
+
 }
 .product-description-box h6{
     color: var(--text-color);
     font-weight: 600;
     font-size: 18px;
+
 }
 .product-description-box h5{
     color: var(--text-color);
@@ -45,16 +48,20 @@
 }
 .mobile-view-product{
     display: none;
+  
 }
 .other-view-product{
     display: block;
+
+}
+.post-link{
+    text-decoration: none;
 }
 .home-category-box{
     overflow: hidden;
     padding-top: 20px;
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid var(--border-color);
     padding: 0 50px;
     color: var(--text-color);
 }
