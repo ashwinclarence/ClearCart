@@ -1,42 +1,59 @@
-# ClearCart E-Commerce Application
+# ClearCart
 
-ClearCart is a modern e-commerce application built using Vite, React.js, Bootstrap, and Firebase. It provides a seamless shopping experience with features like product browsing, cart management, and secure checkout.
+ClearCart is a simple and lightweight shopping cart management system.
 
 ## Table of Contents
-- [Demo](#demo)
+
+- [Introduction](#introduction)
 - [Features](#features)
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
 - [Usage](#usage)
-- [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
 - [License](#license)
 
-## Demo
+## Introduction
 
-Check out the live demo [here](#your-live-demo-url).
+ClearCart is designed to provide a straightforward solution for managing shopping carts in web applications. It aims to be easy to integrate and customize, making it suitable for various e-commerce projects.
 
 ## Features
 
-- Browse products and categories
-- Add products to the shopping cart
-- Manage the shopping cart
-- Secure checkout with Firebase authentication
-- Real-time updates on order status
+- **Simple Integration:** Easily integrate ClearCart into your existing web application.
+- **Customizable:** Tailor the appearance and behavior of the shopping cart to suit your project's needs.
+- **Lightweight:** Keep your project lean with ClearCart's minimalistic design.
+- **Responsive:** ClearCart works seamlessly on various screen sizes and devices.
+- **Easy to Use:** Intuitive user interface for a hassle-free shopping experience.
 
 ## Getting Started
 
-### Prerequisites
-
-Make sure you have the following tools installed:
-
-- Node.js: [https://nodejs.org/](https://nodejs.org/)
-- npm (Node Package Manager): This comes with Node.js installation.
-
-### Installation
+To get started with ClearCart, follow these steps:
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/ashwinclarence/ClearCart.git
+    ```bash
+    git clone https://github.com/ashwinclarence/ClearCart.git
+    ```
+
+2. Include the necessary ClearCart files in your project.
+
+3. Customize the configuration to match your application's requirements.
+
+4. Start using ClearCart in your project.
+
+## Usage
+
+ClearCart provides a simple API for managing shopping carts. Here's a quick example:
+
+```javascript
+// Include ClearCart library
+const clearCart = require('clear-cart');
+
+// Initialize the shopping cart
+const cart = clearCart.createCart();
+
+// Add items to the cart
+cart.addItem({ id: 1, name: 'Product A', price: 19.99, quantity: 2 });
+
+// Get the total cost
+const totalCost = cart.getTotalCost();
+
+console.log(`Total cost: $${totalCost}`);
