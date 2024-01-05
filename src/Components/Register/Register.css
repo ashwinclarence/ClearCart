@@ -105,6 +105,7 @@
     .register-form{
         background: transparent;
         height: 150vh;
+        border: none;
     }
     .register-left-form {
         position: relative;

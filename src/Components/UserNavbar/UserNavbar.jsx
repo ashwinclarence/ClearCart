@@ -1,5 +1,5 @@
 import './UserNavbar.css'
-import logo from '../../images/Clear cart bg 3.png'
+import logo from '../../images/logomain.JPEG'
 import defaultuser from '../../images/user.jpeg'
 import { useContext, useState } from 'react'
 import { TiShoppingCart } from "react-icons/ti";
@@ -21,10 +21,10 @@ function UserNavbar() {
             <div className='navbar-container container-fluid'>
                 <div className="row">
                     <div className="col-md-4">
-                        <Link to='/'> <img src={logo} alt="" className='logo' /></Link>
+                        <Link to='/'> <img src={logo} alt="CLEAR CART" className='logo' /></Link>
 
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-4 search-box">
                         <div className="search">
                             <input type="text" placeholder='Search' />
                             <i className="fa-solid fa-magnifying-glass"></i>

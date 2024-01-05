@@ -16,7 +16,10 @@
     align-items: center;
     gap: 30px;
 }
-
+.search-box{
+    display: flex;
+    align-items: center;
+}
 .search {
     display: flex;
     flex-direction: row;
