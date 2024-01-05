@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import loginLogo from '../../images/c2.png'
+import loginLogo from '../../images/logomain.JPEG'
 import loginimg from '../../images/loginimg2.jpeg'
 import './Login.css'
 import { Link } from 'react-router-dom'
