@@ -10,6 +10,16 @@ function SellProduct() {
     const [proLocation, setProLocation] = useState('')
     const [proDescription, setProDescription] = useState('')
     const [proImage, setProImage] = useState('')
+    const clearAll=(e)=>{
+        e.preventDefault()
+        setProName('')
+        setProPrice('')
+        setProCompanyName('')
+        setProCategory('')
+        setProLocation('')
+        setProDescription('')
+        setProImage('')
+    }
     return (
         <div className="sell-product-container container-fluid">
             <form action="">
@@ -114,11 +124,12 @@ function SellProduct() {
                         <input
                             type="file"
                             className='product-image'
+                            accept="image/png"
                             onChange={(e) => { setProImage(e.target.files[0]) }}
                             required />
 
                         <div className="pro-submit-action">
-                            {/* <button type='submit'>Clear</button> */}
+                            <button onClick={clearAll}>Clear</button>
                             <button type='submit'>Submit</button>
                         </div>
                         <Link to='/' className='pro-back-home'><p>Go Back</p></Link>

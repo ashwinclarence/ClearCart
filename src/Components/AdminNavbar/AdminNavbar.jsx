@@ -18,22 +18,22 @@ function AdminNavbar() {
                     </div>
                     <div className="col-md-8 admin-nav-right">
                         <div className="admin-profile" >
-                            <p>Add Offer Image</p>
+                            <Link to='/admin-add-offer-image' className='admin-nav-links'><p>Add Offer Image</p></Link>
                         </div>
                         <div className="admin-profile" >
-                            <p>View Users</p>
+                            <Link to='/admin-view-users' className='admin-nav-links'><p>View Users</p></Link>
                         </div>
                         <div className="admin-profile" >
-                            <p>View Products</p>
+                            <Link to='/admin-view-products' className='admin-nav-links'><p>View Products</p></Link>
                         </div>
                         <div className="admin-profile" >
-                            <p>Reports</p>
+                            <Link to='/admin-view-reports' className='admin-nav-links'><p>Reports</p></Link>
                         </div>
                         <div className="admin-profile" >
-                            <p>Sale Tracker</p>
+                            <Link to='/admin-view-tracker' className='admin-nav-links'><p>Sale Tracker</p></Link>
                         </div>
                         <div className="admin-profile">
-                        <i className="fa-solid fa-right-from-bracket"></i>
+                            <i className="fa-solid fa-right-from-bracket"></i>
                         </div>
                         <div className="theme" onClick={changeTheme}>
                             {theme ? <i className="fa-solid fa-toggle-on"></i> : <i className="fa-solid fa-toggle-off"></i>}

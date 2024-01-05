@@ -1,16 +1,16 @@
 import './PreLoader.css'
-import bg from '../../images/Clear cart bg 3.png'
-import BarLoader from "react-spinners/BarLoader";
+import PulseLoader from "react-spinners/PulseLoader";
 function PreLoader() {
     return (
-            <div className='pre-loader'>
-                <img src={bg} alt="" />
-                <BarLoader
-                    color="#FEBD69"
-                    height={5}
-                    width={330}
-                />
-            </div>
+        <div className='pre-loader'>
+
+            <PulseLoader
+            id='loader'
+                color="#F99B46"
+                margin={5}
+                size={20}
+            />
+        </div>
     )
 }
 

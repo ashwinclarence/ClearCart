@@ -12,6 +12,8 @@ import UserCartPage from "./Pages/UserCartPage";
 import useLocalStorage from "use-local-storage";
 import ViewPostsPage from "./Pages/ViewPostsPage";
 import AdminHome from "./Pages/AdminHome";
+import AdminLoginPage from "./Pages/AdminLoginPage";
+import AdminOfferImagePage from "./Pages/AdminOfferImagePage";
 export const Context=React.createContext()
 function App() {
   const [loading, setLoading] = useState(false)
@@ -21,7 +23,7 @@ function App() {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-    }, 1000);
+    }, 9000);
   }, [])
 
   return (
@@ -41,6 +43,8 @@ function App() {
               <Route path='/view-cart' element={<UserCartPage/>} ></Route>
               <Route path='/view-post' element={<ViewPostsPage/>} ></Route>
               <Route path='/admin' element={<AdminHome/>} ></Route>
+              <Route path='/admin-login' element={<AdminLoginPage/>} ></Route>
+              <Route path='/admin-add-offer-image' element={<AdminOfferImagePage/>} ></Route>
               
             </Routes>
           </Router>

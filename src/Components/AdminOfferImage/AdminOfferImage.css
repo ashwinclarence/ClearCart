@@ -1,0 +1,23 @@
+.admin-offer-image-container{
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.admin-offer-image-row{
+    background-color: var(--bg-secondary-color);
+    width: 70%;
+}
+.offer-image-prev{
+    width: 400px;
+    height: 250px;
+}
+.admin-offer-box{
+    border: 1px solid #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+   
+}
