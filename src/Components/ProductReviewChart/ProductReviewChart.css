@@ -1,0 +1,26 @@
+.product-review-chart-container{
+    overflow: hidden;
+}
+.product-review-chart-container h4{
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+}
+.product-review-chart-other{
+    display: block;
+    margin: auto;
+}
+.product-review-chart-mobile{
+    display: none;
+    margin: auto;
+}
+@media only screen and (max-width: 800px) {
+    .product-review-chart-mobile{
+        display: block;
+        margin: auto;
+    }
+    .product-review-chart-other{
+        display: none;
+        margin: auto;
+    }
+}
