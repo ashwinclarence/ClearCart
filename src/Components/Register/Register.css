@@ -1,9 +1,5 @@
 .register-form-container {
-    /* background: linear-gradient(140deg, #131A22, #37475A); */
-    background: url('../../images/preload3.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: var(--main-color);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -13,9 +9,9 @@
 
 .register-form {
     position: relative;
-    background-color: #131A22;
+   border: 2px solid var(--border-color);
     border-radius: 10px;
-    height: 550px;
+    height: 570px;
     width: 800px;
     overflow: hidden;
 }
@@ -23,7 +19,7 @@
 .register-left-form {
     position: absolute;
     left: 0;
-    top: 10px;
+    top: 50px;
     width: 50%;
     overflow: hidden;
     padding: 20px;
@@ -32,7 +28,7 @@
 .register-right-form {
     position: absolute;
     right: 0;
-    top: 10px;
+    top: 50px;
     width: 50%;
     padding: 20px;
     overflow: hidden;
@@ -40,6 +36,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+#reg-logo{
+    width: 250px;
+    display: block;
+    margin: auto;
 }
 
 .register-form img {
@@ -99,13 +100,7 @@
 }
 @media only screen and (max-width: 800px) {
     .register-form-container {
-        background: url('../../images/loginmobilebg2.jpg');
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
         height: 150vh;
-        /* filter: blur(4px);
-        -webkit-filter: blur(4px); */
     }
     .register-form{
         background: transparent;

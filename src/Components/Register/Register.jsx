@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './Register.css'
 import { Link } from 'react-router-dom'
 import defaultuser from '../../images/user.jpeg'
-
+import regLogo from '../../images/logomain.JPEG'
 function Register() {
   const [name, setname] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
@@ -15,7 +15,9 @@ function Register() {
     <div className='container-fluid register-form-container'>
       <div className="row register-form">
         <form action="">
+          <img src={regLogo} alt="" id='reg-logo'/>
           <div className="register-left-form">
+       
             <label htmlFor="Fullname">FUll Name</label>
             <input
               type="text"
