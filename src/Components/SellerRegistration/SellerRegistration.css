@@ -24,6 +24,9 @@
     outline: none;
     color: var(--text-color);
 }
+#seller-form input::placeholder{
+    color: var(--text-color);
+}
 
 #seller-submit{
     border: none;
@@ -37,4 +40,53 @@
 .seller-description{
     padding: 10px 50px ;
     text-align: justify;
+}
+#seller-description-read-more{
+    font-weight: 600;
+    display: none;
+    text-decoration: underline;
+}
+.seller-idea-row{
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary-color);
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 96%;
+    margin-top: 20px;
+}
+.seller-idea-img{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+#seller-idea-img{
+    width: 100px;
+}
+.seller-idea-description{
+    text-align: justify;
+}
+.seller-idea-description i{
+    display: flex;
+    justify-content: flex-end;
+}
+@media only screen and (max-width: 800px) {
+    .seller-description{
+        padding: 10px 3px ;
+        text-align: justify;
+    }
+    #seller-description-read-more{
+        display: block;
+    }
+    #seller-description2{
+        display: none;
+    }
+    #seller-description3{
+        display: none;
+    }
+    
+   
 }

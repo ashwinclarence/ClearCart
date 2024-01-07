@@ -5,6 +5,7 @@ import pic3 from '../../images/pim/3.jpg'
 import pic4 from '../../images/pim/4.jpg'
 import pic5 from '../../images/pim/5.jpg'
 import pic6 from '../../images/pim/6.jpeg'
+import { Link } from 'react-router-dom'
 function UserViewProducts() {
     let products = [
         {
@@ -111,6 +112,7 @@ function UserViewProducts() {
                     products.map((obj, index) => {
                         return (
                             <div className="col-md-2 my-product-container m-2" key={index}>
+                                  <Link to='/view-post' className='post-link'>
                                 <div className="my-product-img-box">
                                     <img src={obj.image} alt="" />
                                 </div>
@@ -128,6 +130,7 @@ function UserViewProducts() {
                                         {obj.description.length >= 35 ? <h5 >{obj.description.slice(0, 35)}....</h5> : <h5>{obj.description}</h5>}
                                     </span>
                                 </div>
+                                </Link>
                             </div>
                         )
                     })

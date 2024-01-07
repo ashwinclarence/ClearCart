@@ -28,12 +28,14 @@
     border-radius: 10px;
     overflow: hidden;
     padding: 10px;
+    text-align: justify;
 }
 .view-post-description-box{
     background-color: var(--bg-secondary-color);
     border-radius: 10px;
     overflow: hidden;
     padding: 10px;
+    text-align: justify;
 }
 .view-post-other-box{
    
@@ -47,7 +49,7 @@
 
 #add-to-cart{
     width: 150px;
-    height: 30px;
+    height: 40px;
     border-radius: 5px;
     border: none;
     outline: none;
@@ -55,10 +57,12 @@
     font-size: 17px;
     font-weight: 700;
     margin: 10px;
+    color: var(--black-color);
+
 }
 #buy-now{
     width: 150px;
-    height: 30px;
+    height: 40px;
     border-radius: 5px;
     border: none;
     outline: none;
@@ -66,10 +70,12 @@
     font-size: 17px;
     font-weight: 700;
     margin: 10px;
+    color: var(--black-color);
+
 }
 #share{
     width: 150px;
-    height: 30px;
+    height: 40px;
     border-radius: 5px;
     border: none;
     outline: none;
@@ -77,14 +83,17 @@
     font-size: 17px;
     font-weight: 700;
     margin: 10px;
+    color: var(--black-color);
 }
 .view-post-other-box-inner{
     background-color: var(--bg-secondary-color);
     border-radius: 10px;
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 
 }
 
@@ -95,4 +104,73 @@
    padding: 20px 20px 0;
    text-decoration: underline;
    text-transform: uppercase;
+}
+#write-a-review{
+    margin: 20px;
+    text-decoration: underline;
+
+}
+#review-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    width: 100%;
+    padding-top: 20px;
+ 
+}
+#star-count{
+    color: gold;
+    font-size: 30px;
+}
+.star-checkbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.star-input-checkbox{
+    margin-right: 20px;
+}
+#review-submit-btn{
+    padding: 0 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    height: 40px;
+    margin: 20px;
+    background-color: var(--sub-color);
+    font-weight: 600;
+}
+#star-input-textarea{
+    width: 95%;
+    resize: none;
+    border-radius: 10px;
+    padding: 10px;
+    outline: none;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    margin-top: 10px;
+    color: var(--text-color);
+}
+#star-input-textarea::placeholder{
+    color: var(--text-color);
+}
+@media only screen and (max-width: 800px) {
+    .view-post-container{
+       padding: 20px;
+       /* background-color: var(--bg-secondary-color); */
+    }
+    #add-to-cart{
+        width: 100px;
+        margin: 5px;
+    }
+    #buy-now{
+        width: 100px;
+        margin: 5px;
+    }
+    #share{
+        width: 100px;
+        margin: 5px;
+    }
 }

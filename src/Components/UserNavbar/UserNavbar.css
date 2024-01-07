@@ -213,7 +213,7 @@
     visibility: hidden;
     position: fixed;
     bottom: 0;
-    background-color: #ffffff;
+    background-color:var(--bg-color);
     display: flex;
     justify-content: space-between;
     padding: 20px;
@@ -227,13 +227,13 @@
 }
 
 .nav-bottom-bar-mobile i {
-    color: #000;
+    color: var(--text-color);
     scale: 1.5;
 }
 
 .search-mobile {
     display: none;
-    background-color: #131A22;
+    background-color: var(--main-color);
     padding: 20px 10px 10px;
 }
 .search-mobile img {
