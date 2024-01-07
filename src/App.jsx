@@ -14,6 +14,7 @@ import ViewPostsPage from "./Pages/ViewPostsPage";
 import AdminHome from "./Pages/AdminHome";
 import AdminLoginPage from "./Pages/AdminLoginPage";
 import AdminOfferImagePage from "./Pages/AdminOfferImagePage";
+import SellerRegisertationPage from "./Pages/SellerRegisertationPage";
 export const Context=React.createContext()
 function App() {
   const [loading, setLoading] = useState(false)
@@ -37,6 +38,7 @@ function App() {
               <Route path='/' element={<Home />} ></Route>
               <Route path='/register' element={<RegisterPage />} ></Route>
               <Route path='/login' element={<LoginPage />} ></Route>
+              <Route path='/register-sell-product' element={<SellerRegisertationPage />} ></Route>
               <Route path='/sell-product' element={<SellProductPage />} ></Route>
               <Route path='/view-account' element={<UserProfilePage />} ></Route>
               <Route path='/view-my-product' element={<UserViewProductPage/>} ></Route>

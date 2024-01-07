@@ -39,7 +39,7 @@ function UserNavbar() {
                             </select>
                         </div> */}
                         <div className="cart">
-                            <button><TiShoppingCart /> cart</button>
+                            <button><Link to='/view-cart' id='cartlogo'><TiShoppingCart /> cart</Link></button>
                         </div>
                         <div className="profile">
                             <img src={defaultuser} alt="" onClick={showSidebar} />
@@ -98,7 +98,7 @@ function UserNavbar() {
                     </li>
                     <li className="profile-links">
                         <i className="fa-solid fa-plus"></i>
-                        <Link to='/sell-product' className='view-profile'>Become a seller</Link>
+                        <Link to='/register-sell-product' className='view-profile'>Become a seller</Link>
                     </li>
                     <li className="profile-links part">
                         <i className="fa-solid fa-tags"></i>

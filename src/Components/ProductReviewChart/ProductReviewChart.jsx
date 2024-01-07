@@ -3,7 +3,6 @@ import './ProductReviewChart.css'
 import Chart from "react-apexcharts";
 function ProductReviewChart() {
     const [state, setState] = useState({
-          
         series: [67,44, 55, 90, 83],
         options: {
           plotOptions: {

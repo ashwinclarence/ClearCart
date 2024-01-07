@@ -1,4 +1,4 @@
-import defaultuser from '../../images/user.jpeg'
+import defaultuser from '../../images/noimg.jpg'
 import { useState } from 'react'
 import './SellProduct.css'
 import { Link } from 'react-router-dom'

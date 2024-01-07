@@ -267,6 +267,10 @@
     scale: 1.5;
     text-align: center;
 }
+#cartlogo{
+    text-decoration: none;
+    color: #fff;
+}
 
 /* phones */
 @media only screen and (max-width: 600px) {
