@@ -3,8 +3,9 @@
 }
 .posts-row{
     display: flex;
-    justify-content: space-evenly;
-    padding-top: 20px;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 0;
 }
 .product-container{
     background-color: var(--bg-secondary-color);
@@ -12,7 +13,7 @@
     border-radius: 20px;
     overflow: hidden;
     height: 350px;
-    
+    width: 310px;
 }
 .product-img-box{
     background-color: #fff;

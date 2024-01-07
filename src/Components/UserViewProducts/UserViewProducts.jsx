@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 function UserViewProducts() {
     let products = [
         {
-            name: "Iphone 13 256 gb",
+            name: "Apple iPhone 13 (512GB) - (Product) RED",
             price: 65000,
             companyName: "Apple",
             description: "Super Retina XDR display footnote ProMotion technology Always-On display",
@@ -17,7 +17,7 @@ function UserViewProducts() {
             image: pic1
         },
         {
-            name: "Dinning Table",
+            name: "KENDALWOOD™ Furniture Sheesham Wood CNC Cuting Dining Table with 4 Chairs with 1 Bench|6 Seater Dining Set- Dining Room Furniture (Finish Color:-Honey Teak with Cream Cushion)",
             price: 10000,
             companyName: "forest woods",
             description: "dinning table for 4 person in glass finishing",
@@ -25,7 +25,7 @@ function UserViewProducts() {
             image: pic2
         },
         {
-            name: "Supra GR-5",
+            name: "FUNABLO 1/22 Scale Big Toyota Supra GR LBWK Model Diecast Metal Pullback Toy car with Openable Doors & Light, Music Boys car for Kids Best Toys Gifts Toys for Kids -White",
             price: 2547899,
             companyName: "Toyota",
             description: "Race-car-inspired and ready for the streets, GR Supra's 45th Anniversary Edition Mikan Blast exterior color brings this legend to life. Matte-black 19-in. forged-aluminum wheels and a manually adjustable rear spoiler finish off the GT4-inspired look, while sport-tuned handling and a powerful engine help you take on exhilarating drives. From bending around street corners to driving across highways, GR Supra's 45th Anniversary Edition is the return you’ve been waiting on.",
@@ -33,7 +33,7 @@ function UserViewProducts() {
             image: pic3
         },
         {
-            name: "Brazuca",
+            name: "SBJT Brazuka Football for All Ages Suited for The Grass Fields | PU | Suitable for Grass |Practice Ball | Soccer Ball | for Men/Women | Football Size - 5 ",
             price: 1850,
             companyName: "FIFA",
             description: "2018 worldcup football",
@@ -41,7 +41,7 @@ function UserViewProducts() {
             image: pic4
         },
         {
-            name: "Hunter",
+            name: "M TECHNICS Hunter 350 Luggage Carrier Plate | Back Carrier for Hunter 350 | Rear Rack for Hunter 350 | Mtechnics Hunter 350 Expediton Carrier",
             price: 249000,
             companyName: "Royal Enfiled",
             description: "hunter 350 with amazing millage performance",
@@ -49,7 +49,7 @@ function UserViewProducts() {
             image: pic5
         },
         {
-            name: "washing machine",
+            name: "Whirlpool 6 Kg 5 Star Royal Fully-Automatic Top Loading Washing Machine (WHITEMAGIC ROYAL 6 GENX, Grey, ZPF Technology)",
             price: 100,
             companyName: "ashlin and herself",
             description: "sometimes works other time use your hand",
@@ -57,7 +57,7 @@ function UserViewProducts() {
             image: pic6
         },
         {
-            name: "Iphone 13 256 gb",
+            name: "Apple iPhone 13 (512GB) - (Product) RED",
             price: 65000,
             companyName: "Apple",
             description: "Super Retina XDR display footnote ProMotion technology Always-On display",
@@ -65,7 +65,7 @@ function UserViewProducts() {
             image: pic1
         },
         {
-            name: "Dinning Table",
+            name: "KENDALWOOD™ Furniture Sheesham Wood CNC Cuting Dining Table with 4 Chairs with 1 Bench|6 Seater Dining Set- Dining Room Furniture (Finish Color:-Honey Teak with Cream Cushion)",
             price: 10000,
             companyName: "forest woods",
             description: "dinning table for 4 person in glass finishing",
@@ -73,7 +73,7 @@ function UserViewProducts() {
             image: pic2
         },
         {
-            name: "Supra GR-5",
+            name: "FUNABLO 1/22 Scale Big Toyota Supra GR LBWK Model Diecast Metal Pullback Toy car with Openable Doors & Light, Music Boys car for Kids Best Toys Gifts Toys for Kids -White",
             price: 2547899,
             companyName: "Toyota",
             description: "Race-car-inspired and ready for the streets, GR Supra's 45th Anniversary Edition Mikan Blast exterior color brings this legend to life. Matte-black 19-in. forged-aluminum wheels and a manually adjustable rear spoiler finish off the GT4-inspired look, while sport-tuned handling and a powerful engine help you take on exhilarating drives. From bending around street corners to driving across highways, GR Supra's 45th Anniversary Edition is the return you’ve been waiting on.",
@@ -81,7 +81,7 @@ function UserViewProducts() {
             image: pic3
         },
         {
-            name: "Brazuca",
+            name: "SBJT Brazuka Football for All Ages Suited for The Grass Fields | PU | Suitable for Grass |Practice Ball | Soccer Ball | for Men/Women | Football Size - 5 ",
             price: 1850,
             companyName: "FIFA",
             description: "2018 worldcup football",
@@ -89,7 +89,7 @@ function UserViewProducts() {
             image: pic4
         },
         {
-            name: "Hunter",
+            name: "M TECHNICS Hunter 350 Luggage Carrier Plate | Back Carrier for Hunter 350 | Rear Rack for Hunter 350 | Mtechnics Hunter 350 Expediton Carrier",
             price: 249000,
             companyName: "Royal Enfiled",
             description: "hunter 350 with amazing millage performance",
@@ -97,7 +97,7 @@ function UserViewProducts() {
             image: pic5
         },
         {
-            name: "washing machine",
+            name: "Whirlpool 6 Kg 5 Star Royal Fully-Automatic Top Loading Washing Machine (WHITEMAGIC ROYAL 6 GENX, Grey, ZPF Technology)",
             price: 100,
             companyName: "ashlin and herself",
             description: "sometimes works other time use your hand",
@@ -111,7 +111,7 @@ function UserViewProducts() {
                 {
                     products.map((obj, index) => {
                         return (
-                            <div className="col-md-2 my-product-container m-2" key={index}>
+                            <div className="col-md-3 my-product-container" key={index}>
                                   <Link to='/view-post' className='post-link'>
                                 <div className="my-product-img-box">
                                     <img src={obj.image} alt="" />
@@ -125,9 +125,9 @@ function UserViewProducts() {
                                     </span>
                                     <span className='my-other-view-product'>
                                         {obj.companyName.length >= 30 ? <h5>{obj.companyName.slice(0, 35)}...</h5> : <h5>{obj.companyName}</h5>}
-                                        {obj.name.length >= 25 ? <h4 >{obj.name.slice(0, 25)}....</h4> : <h4>{obj.name}</h4>}
+                                        {obj.name.length >= 25 ? <h4 >{obj.name.slice(0, 30)}....</h4> : <h4>{obj.name}</h4>}
                                         <h6><i className="fa-solid fa-indian-rupee-sign"></i> {obj.price.toLocaleString()}</h6>
-                                        {obj.description.length >= 35 ? <h5 >{obj.description.slice(0, 35)}....</h5> : <h5>{obj.description}</h5>}
+                                        {obj.description.length >= 35 ? <h5 >{obj.description.slice(0, 40)}....</h5> : <h5>{obj.description}</h5>}
                                     </span>
                                 </div>
                                 </Link>

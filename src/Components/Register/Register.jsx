@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './Register.css'
-import { Await, Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import defaultuser from '../../images/user.jpeg'
 import regLogo from '../../images/logomain.JPEG'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
