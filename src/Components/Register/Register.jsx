@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import './Register.css'
-import { Link } from 'react-router-dom'
+import { Await, Link, useNavigate } from 'react-router-dom'
 import defaultuser from '../../images/user.jpeg'
 import regLogo from '../../images/logomain.JPEG'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { auth } from '../../Firebase/config'
 function Register() {
+  const navigate = useNavigate()
   const [name, setname] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [email, setEmail] = useState('')
@@ -11,13 +14,35 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [location, setLocation] = useState('')
   const [profileImage, setProfileImage] = useState('')
+  const registerUser = async(e) => {
+    e.preventDefault()
+    if(password===confirmPassword){
+    await createUserWithEmailAndPassword(auth, email, password).then((userCredentail) => {
+        alert("registeration sucess")
+        const user = userCredentail.user;
+        console.log((user));
+        navigate('/')
+      }).catch((err) => {
+        console.log(err.code);
+        console.log(err.message);
+      })
+      await updateProfile(auth.currentUser,{
+        displayName:name,
+        phoneNumber:phoneNumber
+      }).then(()=>{
+        console.log("user name chnaged"+ auth.currentUser.displayName);
+      })
+    }
+    
+  }
+
   return (
     <div className='container-fluid register-form-container'>
       <div className="row register-form">
-        <form action="">
-          <img src={regLogo} alt="" id='reg-logo'/>
+        <form action="" onSubmit={registerUser}>
+          <img src={regLogo} alt="" id='reg-logo' />
           <div className="register-left-form">
-       
+
             <label htmlFor="Fullname">FUll Name</label>
             <input
               type="text"
@@ -44,7 +69,7 @@ function Register() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required />
-               <label htmlFor="location">Location</label>
+            <label htmlFor="location">Location</label>
             <select
               name="location"
               id="location"
@@ -99,22 +124,22 @@ function Register() {
               required />
           </div>
           <div className="register-right-form">
-           
+
             <label htmlFor="">Profile Picture</label><br />
-           {profileImage?<img src={URL.createObjectURL(profileImage)} className='register-img-prev'/>:<img src={defaultuser} className='register-img-prev'/>}
+            {profileImage ? <img src={URL.createObjectURL(profileImage)} className='register-img-prev' /> : <img src={defaultuser} className='register-img-prev' />}
             <input
               type="file"
               className='register-profile-image'
               onChange={(e) => { setProfileImage(e.target.files[0]) }}
               required />
-              
+
 
             <button type='submit'>Register</button>
 
             <Link to='/login' className='back-home'><p>Already have an account?</p></Link>
             <Link to='/' className='back-home'><p>Go Back</p></Link>
-              </div>
-         
+          </div>
+
         </form>
       </div>
     </div>
