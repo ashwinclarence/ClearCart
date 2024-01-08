@@ -1,0 +1,16 @@
+.loader-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    top: 150px;
+}
+
+@media only screen and (max-width: 800px) {
+    
+    
+
+}

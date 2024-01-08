@@ -5,7 +5,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { auth, itemRef, storage } from '../../Firebase/config'
 import { addDoc } from 'firebase/firestore'
+import Loader from '../Loader/loader'
 function SellProduct() {
+    const [loader,setloader]=useState(false)
     const [proName, setProName] = useState('')
     const [proPrice, setProPrice] = useState('')
     const [proCompanyName, setProCompanyName] = useState('')
@@ -25,6 +27,7 @@ function SellProduct() {
     }
     const AddSellProduct = async (e) => {
         e.preventDefault()
+        setloader(true)
         const imageStorageRef = ref(storage, `ProductImage/${auth.currentUser.uid}/${Date.now()}`)
         await uploadBytes(imageStorageRef, proImage).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((url) => {
@@ -60,6 +63,7 @@ function SellProduct() {
                     star4: 0,
                     star5: 0,
                 }, docData).then((docRef) => {
+                    setloader(false)
                     navigate('/')
                     clearAll()
                     alert("product Add with id " + docRef.id)
@@ -69,6 +73,7 @@ function SellProduct() {
     }
     return (
         <div className="sell-product-container container-fluid">
+              {loader?<Loader/>:""} 
             <form action="" onSubmit={AddSellProduct}>
                 <div className="row sell-product-row">
                     <div className="col-md-6 left-sell-product">
