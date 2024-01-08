@@ -12,8 +12,8 @@
     position: relative;
     /* background-color: var(--main-color); */
     border-radius: 10px;
-    height: 400px;
-    width: 800px;
+    height: 420px;
+    width: 850px;
     overflow: hidden;
 }
 
@@ -91,7 +91,10 @@
     margin-top: 10px;
     font-size: 12px;
 }
-
+#error-label{
+    color: red;
+    display: none;
+}
 @media only screen and (max-width: 800px) {
     .login-form-container{
         background-color: var(--main-color);
