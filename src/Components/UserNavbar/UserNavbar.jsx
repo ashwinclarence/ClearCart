@@ -14,7 +14,6 @@ function UserNavbar() {
     const [theme, setTheme] = useContext(Context)
     const [userStatus, setUserStatus] = useState(false)
     const [username, setUsername] = useState('')
-    const [userid, setUserid] = useState('')
     const [navUserProfile, setNavUserProfile] = useState('')
     // function toggle sidebar
     const showSidebar = () => {
@@ -38,7 +37,6 @@ function UserNavbar() {
         onAuthStateChanged(auth, (user) => {
             if (user !== null) {
                 setUsername(user.displayName)
-                setUserid(user.uid)
                 setUserStatus(true)
             } else {
                 setUserStatus(false)
@@ -46,16 +44,18 @@ function UserNavbar() {
         })
     }, [])
     // function to get current user infromation from firebase
-    getDocs(userRef).then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
-            console.log(doc.data());
-            if (auth.currentUser.uid === doc.data().userId) {
-                setNavUserProfile(doc.data().profileImage)
-            }
+    if(auth.currentUser){
+        getDocs(userRef).then((snapshot) => {
+            snapshot.docs.forEach((doc) => {
+                if (auth.currentUser.uid === doc.data().userId) {
+                    setNavUserProfile(doc.data().profileImage)
+                }
+            })
+        }).catch(err => {
+            console.log(err.message);
         })
-    }).catch(err => {
-        console.log(err.message);
-    })
+    }
+   
 
     return (
         <span data-theme={theme ? "dark" : "light"}>
@@ -121,7 +121,8 @@ function UserNavbar() {
                     </li>
                     <li className="profile-links">
                         <i className="fa-regular fa-eye"></i>
-                        <Link to='/view-account' className='view-profile'>view Account</Link>
+                        {userStatus? <Link to='/view-account' className='view-profile'>view Account</Link>: <Link to='/login' className='view-profile'>view Account</Link>}
+                       
                     </li>
                     <li className="profile-links">
                         <i className="fa-brands fa-opencart"></i>

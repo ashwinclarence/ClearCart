@@ -59,8 +59,12 @@
      padding-left: 20px;
  
 }
-
-
+.fa-circle-check{
+    color: green;
+}
+.fa-circle-xmark{
+    color: red;
+}
 
 @media only screen and (max-width: 800px) {
     .right-user-profile {

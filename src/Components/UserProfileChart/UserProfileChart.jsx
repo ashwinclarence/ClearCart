@@ -2,6 +2,8 @@ import { useState } from 'react';
 import './UserProfileChart.css'
 import Chart from "react-apexcharts";
 function UserProfileChart() {
+  
+  
   const [state, setState] = useState({
     options: {
       chart: {

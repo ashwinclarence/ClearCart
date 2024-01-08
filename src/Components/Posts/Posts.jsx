@@ -19,7 +19,6 @@ import { itemRef } from '../../Firebase/config'
 function Posts() {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState('all');
-  console.log(category);
   useEffect(() => {
     try {
       getDocs(itemRef).then((snapshot) => {
