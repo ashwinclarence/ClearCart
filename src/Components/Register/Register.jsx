@@ -3,8 +3,10 @@ import './Register.css'
 import { Link, useNavigate } from 'react-router-dom'
 import defaultuser from '../../images/user.jpeg'
 import regLogo from '../../images/logomain.JPEG'
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
-import { auth } from '../../Firebase/config'
+import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from 'firebase/auth'
+import { auth, storage, userRef } from '../../Firebase/config'
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
+import { addDoc } from 'firebase/firestore'
 function Register() {
   const navigate = useNavigate()
   const [name, setname] = useState('')
@@ -14,10 +16,12 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [location, setLocation] = useState('')
   const [profileImage, setProfileImage] = useState('')
-  const registerUser = async(e) => {
+  let date=new Date()
+
+  const registerUser = async (e) => {
     e.preventDefault()
-    if(password===confirmPassword){
-    await createUserWithEmailAndPassword(auth, email, password).then((userCredentail) => {
+    if (password === confirmPassword) {
+      await createUserWithEmailAndPassword(auth, email, password).then((userCredentail) => {
         alert("registeration sucess")
         const user = userCredentail.user;
         console.log((user));
@@ -26,14 +30,45 @@ function Register() {
         console.log(err.code);
         console.log(err.message);
       })
-      await updateProfile(auth.currentUser,{
-        displayName:name,
-        phoneNumber:phoneNumber
-      }).then(()=>{
-        console.log("user name chnaged"+ auth.currentUser.displayName);
+      await updateProfile(auth.currentUser, {
+        displayName: name,
+        phoneNumber: phoneNumber
+      }).then(() => {
+        console.log("user name chnaged" + auth.currentUser.displayName);
+      })
+      await sendEmailVerification(auth.currentUser).then(() => {
+        console.log("verfication email send");
+      })
+      const imageStorageRef = ref(storage, `userImage/${auth.currentUser.uid}`)
+      await uploadBytes(imageStorageRef, profileImage).then((snapshot) => {
+        console.log(snapshot);
+        getDownloadURL(snapshot.ref).then((url) => {
+          console.log("url of the image " + url);
+          const docData = {
+            username: "name",
+            Id: "authcurrentUseruid",
+            email: "email",
+            phoneNumber: 123456,
+            joinDate: 123456,
+            ProfileImage: "url",
+            reportCount: 0,
+            location: "location"
+          }
+          addDoc(userRef, {
+            username:name,
+            userId:auth.currentUser.uid,
+            email,
+            phoneNumber,
+            joinDate:date.toDateString(),
+            profileImage:url,
+            reportCount:0,
+            location,
+
+          }, docData)
+        })
       })
     }
-    
+
   }
 
   return (
