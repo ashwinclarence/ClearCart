@@ -39,7 +39,7 @@
 }
 
 .left-sell-product option {
-    background-color: var(--border-color);
+    background-color: var(--bg-secondary-color);
 }
 
 .left-sell-product label {

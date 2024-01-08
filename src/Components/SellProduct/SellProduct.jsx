@@ -1,28 +1,75 @@
 import defaultuser from '../../images/noimg.jpg'
 import { useState } from 'react'
 import './SellProduct.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
+import { auth, itemRef, storage } from '../../Firebase/config'
+import { addDoc } from 'firebase/firestore'
 function SellProduct() {
     const [proName, setProName] = useState('')
     const [proPrice, setProPrice] = useState('')
     const [proCompanyName, setProCompanyName] = useState('')
     const [proCategory, setProCategory] = useState('')
-    const [proLocation, setProLocation] = useState('')
     const [proDescription, setProDescription] = useState('')
     const [proImage, setProImage] = useState('')
-    const clearAll=(e)=>{
+    const date = new Date()
+    const navigate = useNavigate()
+    const clearAll = (e) => {
         e.preventDefault()
         setProName('')
         setProPrice('')
         setProCompanyName('')
         setProCategory('')
-        setProLocation('')
         setProDescription('')
         setProImage('')
     }
+    const AddSellProduct = async (e) => {
+        e.preventDefault()
+        const imageStorageRef = ref(storage, `ProductImage/${auth.currentUser.uid}/${Date.now()}`)
+        await uploadBytes(imageStorageRef, proImage).then((snapshot) => {
+            getDownloadURL(snapshot.ref).then((url) => {
+                const docData = {
+                    sellerName: "authcurrentUserdisplayName",
+                    sellerId: "authcurrentUseruid",
+                    productName: "proName",
+                    productPrice: 25,
+                    productCompany: "proCompanyName",
+                    productCategory: "proCategory",
+                    productDescription: "proDescription",
+                    productUploaded: "datetoDateString",
+                    productImage: "url",
+                    star1: 0,
+                    star2: 0,
+                    star3: 0,
+                    star4: 0,
+                    star5: 0,
+                }
+                addDoc(itemRef, {
+                    sellerName: auth.currentUser.displayName,
+                    sellerId: auth.currentUser.uid,
+                    productName: proName,
+                    productPrice: proPrice,
+                    productCompany: proCompanyName,
+                    productCategory: proCategory,
+                    productDescription: proDescription,
+                    productUploaded: date.toDateString(),
+                    productImage: url,
+                    star1: 0,
+                    star2: 0,
+                    star3: 0,
+                    star4: 0,
+                    star5: 0,
+                }, docData).then((docRef) => {
+                    navigate('/')
+                    clearAll()
+                    alert("product Add with id " + docRef.id)
+                })
+            })
+        })
+    }
     return (
         <div className="sell-product-container container-fluid">
-            <form action="">
+            <form action="" onSubmit={AddSellProduct}>
                 <div className="row sell-product-row">
                     <div className="col-md-6 left-sell-product">
                         <label htmlFor="productName">Product Name</label>
@@ -52,43 +99,6 @@ function SellProduct() {
                             value={proCompanyName}
                             onChange={(e => { setProCompanyName(e.target.value) })}
                             required />
-                        <label htmlFor="productLocation">Product Location</label>
-                        <select
-                            name="productLocation"
-                            id="productLocation"
-                            required
-                            value={proLocation}
-                            onChange={(e) => setProLocation(e.target.value)} >
-                            <option value=''>Choose location</option>
-                            <option value="Andhra Pradesh">Andhra Pradesh</option>
-                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                            <option value="Assam">Assam</option>
-                            <option value="Bihar">Bihar</option>
-                            <option value="Chhattisgarh">Chhattisgarh</option>
-                            <option value="Goa">Goa</option>
-                            <option value="Gujarat">Gujarat</option>
-                            <option value="Haryana">Haryana</option>
-                            <option value="Himachal Pradesh">Himachal Pradesh</option>
-                            <option value="Jharkhand">Jharkhand</option>
-                            <option value="Karnataka">Karnataka</option>
-                            <option value="Kerala">Kerala</option>
-                            <option value="Maharashtra">Maharashtra</option>
-                            <option value="Madhya Pradesh">Madhya Pradesh</option>
-                            <option value="Manipur">Manipur</option>
-                            <option value="Meghalaya">Meghalaya</option>
-                            <option value="Mizoram">Mizoram</option>
-                            <option value="Nagaland">Nagaland</option>
-                            <option value="Odisha">Odisha</option>
-                            <option value="Punjab">Punjab</option>
-                            <option value="Rajasthan">Rajasthan</option>
-                            <option value="Sikkim">Sikkim</option>
-                            <option value="Tamil Nadu">Tamil Nadu</option>
-                            <option value="Tripura">Tripura</option>
-                            <option value="Telangana">Telangana</option>
-                            <option value="Uttar Pradesh">Uttar Pradesh</option>
-                            <option value="Uttarakhand">Uttarakhand</option>
-                            <option value="West Bengal">West Bengal</option>
-                        </select>
                         <label htmlFor="productCategory">Product Category</label>
                         <select
                             name="productCategory"
