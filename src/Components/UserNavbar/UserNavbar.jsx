@@ -1,16 +1,21 @@
 import './UserNavbar.css'
 import logo from '../../images/logomain.JPEG'
 import defaultuser from '../../images/user.jpeg'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { TiShoppingCart } from "react-icons/ti";
 import { Link, useNavigate } from 'react-router-dom';
 import { Context } from '../../App';
-import { signOut } from 'firebase/auth';
-import {auth} from '../../Firebase/config'
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { auth, userRef } from '../../Firebase/config'
+import { getDocs } from 'firebase/firestore';
 function UserNavbar() {
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     const [sidebar, setSidebar] = useState(false)
     const [theme, setTheme] = useContext(Context)
+    const [userStatus, setUserStatus] = useState(false)
+    const [username, setUsername] = useState('')
+    const [userid, setUserid] = useState('')
+    const [navUserProfile, setNavUserProfile] = useState('')
     // function toggle sidebar
     const showSidebar = () => {
         setSidebar(!sidebar)
@@ -19,15 +24,39 @@ function UserNavbar() {
         setTheme(!theme)
     }
     // function to logout user
-    const userLogout=(e)=>{
+    const userLogout = (e) => {
         e.preventDefault()
-        signOut(auth).then(()=>{
+        signOut(auth).then(() => {
             navigate('/login')
-        }).catch((err)=>{
+        }).catch((err) => {
             console.log("user logout");
             console.log(err.mesage);
         })
     }
+    //function to know the state of user
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user !== null) {
+                setUsername(user.displayName)
+                setUserid(user.uid)
+                setUserStatus(true)
+            } else {
+                setUserStatus(false)
+            }
+        })
+    }, [])
+    // function to get current user infromation from firebase
+    getDocs(userRef).then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+            console.log(doc.data());
+            if (auth.currentUser.uid === doc.data().userId) {
+                setNavUserProfile(doc.data().profileImage)
+            }
+        })
+    }).catch(err => {
+        console.log(err.message);
+    })
+
     return (
         <span data-theme={theme ? "dark" : "light"}>
 
@@ -52,10 +81,11 @@ function UserNavbar() {
                             </select>
                         </div> */}
                         <div className="cart">
-                            <button><Link to='/view-cart' id='cartlogo'><TiShoppingCart /> cart</Link></button>
+                            <button>{userStatus ? <Link to='/view-cart' id='cartlogo'><TiShoppingCart /> cart</Link> : <Link to='/login' id='cartlogo'><TiShoppingCart /> cart</Link>}</button>
                         </div>
                         <div className="profile">
-                            <img src={defaultuser} alt="" onClick={showSidebar} />
+                            <img src={navUserProfile ? navUserProfile : defaultuser} alt="" onClick={showSidebar} />
+
                         </div>
                         <div className="theme">
                             <div onClick={changeTheme}>
@@ -84,10 +114,10 @@ function UserNavbar() {
                         <i className="fa-solid fa-xmark" onClick={showSidebar}></i>
                     </li>
                     <li className="profile-image">
-                        <img src={defaultuser} alt="" />
+                        <img src={navUserProfile ? navUserProfile : defaultuser} alt="" />
                     </li>
                     <li className="profile-name">
-                        <h3>ashwin clarence</h3>
+                        <h3>{userStatus ? username : "USER"}</h3>
                     </li>
                     <li className="profile-links">
                         <i className="fa-regular fa-eye"></i>
@@ -97,15 +127,15 @@ function UserNavbar() {
                         <i className="fa-brands fa-opencart"></i>
                         <Link to='/view-cart' className='view-profile'>View Orders</Link>
                     </li>
-                    {auth.currentUser?<li className="profile-links part">
+                    {auth.currentUser ? <li className="profile-links part">
                         <i className="fa-solid fa-right-from-bracket"></i>
                         <Link onClick={userLogout} className='view-profile'>logout</Link>
-                    </li>: <li className="profile-links part">
+                    </li> : <li className="profile-links part">
                         <i className="fa-solid fa-right-to-bracket"></i>
                         <Link to='/login' className='view-profile'>login</Link>
                     </li>}
-                    
-                   
+
+
                     <li className="profile-links">
                         <i className="fa-solid fa-plus"></i>
                         <Link to='/register-sell-product' className='view-profile'>Become a seller</Link>

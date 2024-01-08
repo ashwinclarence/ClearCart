@@ -271,6 +271,10 @@
     text-decoration: none;
     color: #fff;
 }
+#cartlogo1{
+    text-decoration: none;
+    color: #fff;
+}
 
 /* phones */
 @media only screen and (max-width: 800px) {

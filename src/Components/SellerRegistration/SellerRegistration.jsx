@@ -16,6 +16,7 @@ function SellerRegistration() {
     const [IFSC, setIFSC] = useState('')
     const seller = (e) => {
         e.preventDefault()
+        
         alert("submited")
         navigate('/sell-product')
     }

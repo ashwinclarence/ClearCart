@@ -66,6 +66,9 @@
     border-radius: 5px;
     color: #000000;
 }
+.login-form input::placeholder{
+    color: #000000;
+}
 
 .login-form button {
     width: 30%;
@@ -113,7 +116,7 @@
         border-bottom: 2px solid rgb(255, 255, 255);
     }
     input::placeholder{
-        color: #fff;
+        color: var(--text-color);
     }
 
     .login-form form {

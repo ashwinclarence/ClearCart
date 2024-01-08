@@ -16,19 +16,27 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [location, setLocation] = useState('')
   const [profileImage, setProfileImage] = useState('')
-  let date=new Date()
+  let date = new Date()
 
   const registerUser = async (e) => {
     e.preventDefault()
     if (password === confirmPassword) {
       await createUserWithEmailAndPassword(auth, email, password).then((userCredentail) => {
-        alert("registeration sucess")
+        alert(name+" Your Registeration Successfull")
         const user = userCredentail.user;
         console.log((user));
         navigate('/')
       }).catch((err) => {
         console.log(err.code);
         console.log(err.message);
+        alert(err.message)
+        setname('')
+        setPhoneNumber('')
+        setEmail('')
+        setPassword('')
+        setConfirmPassword('')
+        setLocation('')
+        setProfileImage('')
       })
       await updateProfile(auth.currentUser, {
         displayName: name,
@@ -52,21 +60,31 @@ function Register() {
             joinDate: 123456,
             ProfileImage: "url",
             reportCount: 0,
-            location: "location"
+            location: "location",
+            iSseller: false,
           }
           addDoc(userRef, {
-            username:name,
-            userId:auth.currentUser.uid,
+            username: name,
+            userId: auth.currentUser.uid,
             email,
             phoneNumber,
-            joinDate:date.toDateString(),
-            profileImage:url,
-            reportCount:0,
+            joinDate: date.toDateString(),
+            profileImage: url,
+            reportCount: 0,
             location,
-
+            iSseller: false,
           }, docData)
         })
       })
+    } else {
+      alert("Passwords Dosen't Match")
+      setname('')
+      setPhoneNumber('')
+      setEmail('')
+      setPassword('')
+      setConfirmPassword('')
+      setLocation('')
+      setProfileImage('')
     }
 
   }
@@ -170,7 +188,6 @@ function Register() {
 
 
             <button type='submit'>Register</button>
-
             <Link to='/login' className='back-home'><p>Already have an account?</p></Link>
             <Link to='/' className='back-home'><p>Go Back</p></Link>
           </div>

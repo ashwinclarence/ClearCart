@@ -51,7 +51,7 @@ function SellProduct() {
                     sellerName: auth.currentUser.displayName,
                     sellerId: auth.currentUser.uid,
                     productName: proName,
-                    productPrice: proPrice,
+                    productPrice:Number(proPrice) ,
                     productCompany: proCompanyName,
                     productCategory: proCategory,
                     productDescription: proDescription,
@@ -121,6 +121,8 @@ function SellProduct() {
                             <option value="Furniture">Furniture</option>
                             <option value="Books">Books</option>
                             <option value="Toys">Toys</option>
+                            <option value="Tools">Tools</option>
+                            <option value="Sports">Sports</option>
                         </select>
                         <label htmlFor="productDescriptionName">Product Description</label>
                         <textarea
