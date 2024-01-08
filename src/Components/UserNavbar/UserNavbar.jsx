@@ -3,9 +3,12 @@ import logo from '../../images/logomain.JPEG'
 import defaultuser from '../../images/user.jpeg'
 import { useContext, useState } from 'react'
 import { TiShoppingCart } from "react-icons/ti";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Context } from '../../App';
+import { signOut } from 'firebase/auth';
+import {auth} from '../../Firebase/config'
 function UserNavbar() {
+    const navigate=useNavigate()
     const [sidebar, setSidebar] = useState(false)
     const [theme, setTheme] = useContext(Context)
     // function toggle sidebar
@@ -14,6 +17,16 @@ function UserNavbar() {
     }
     const changeTheme = () => {
         setTheme(!theme)
+    }
+    // function to logout user
+    const userLogout=(e)=>{
+        e.preventDefault()
+        signOut(auth).then(()=>{
+            navigate('/login')
+        }).catch((err)=>{
+            console.log("user logout");
+            console.log(err.mesage);
+        })
     }
     return (
         <span data-theme={theme ? "dark" : "light"}>
@@ -84,18 +97,15 @@ function UserNavbar() {
                         <i className="fa-brands fa-opencart"></i>
                         <Link to='/view-cart' className='view-profile'>View Orders</Link>
                     </li>
-                    <li className="profile-links">
-                        <i className="fa-solid fa-people-arrows"></i>
-                        <Link to='/register' className='view-profile'>Switch Account</Link>
-                    </li>
-                    <li className="profile-links">
+                    {auth.currentUser?<li className="profile-links part">
                         <i className="fa-solid fa-right-from-bracket"></i>
-                        <Link to='/' className='view-profile'>logout</Link>
-                    </li>
-                    <li className="profile-links part">
+                        <Link onClick={userLogout} className='view-profile'>logout</Link>
+                    </li>: <li className="profile-links part">
                         <i className="fa-solid fa-right-to-bracket"></i>
                         <Link to='/login' className='view-profile'>login</Link>
-                    </li>
+                    </li>}
+                    
+                   
                     <li className="profile-links">
                         <i className="fa-solid fa-plus"></i>
                         <Link to='/register-sell-product' className='view-profile'>Become a seller</Link>
@@ -106,7 +116,7 @@ function UserNavbar() {
                     </li>
                     <li className="profile-links">
                         <i className="fa-solid fa-globe"></i>
-                        <Link to='/' className='view-profile'>Change Location</Link>
+                        <Link to='/change-location' className='view-profile'>Change Location</Link>
                     </li>
                     <li className="profile-links part">
                         <i className="fa-solid fa-language"></i>

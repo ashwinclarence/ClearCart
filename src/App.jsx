@@ -15,6 +15,7 @@ import AdminHome from "./Pages/AdminHome";
 import AdminLoginPage from "./Pages/AdminLoginPage";
 import AdminOfferImagePage from "./Pages/AdminOfferImagePage";
 import SellerRegisertationPage from "./Pages/SellerRegisertationPage";
+import UserLocationPage from "./Pages/UserLocationPage";
 export const Context=React.createContext()
 function App() {
   const [loading, setLoading] = useState(false)
@@ -47,6 +48,7 @@ function App() {
               <Route path='/admin' element={<AdminHome/>} ></Route>
               <Route path='/admin-login' element={<AdminLoginPage/>} ></Route>
               <Route path='/admin-add-offer-image' element={<AdminOfferImagePage/>} ></Route>
+              <Route path='/change-location' element={<UserLocationPage/>} ></Route>
               
             </Routes>
           </Router>

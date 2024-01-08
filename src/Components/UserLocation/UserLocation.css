@@ -1,0 +1,51 @@
+.user-location-container{
+    height: 100vh;
+    background-color: var(--bg-color);
+}
+.user-location-row{
+    overflow: hidden;
+    padding: 20px;
+   
+}
+#mapimg{
+object-fit: contain;
+height: 90vh;
+display: block;
+margin: auto;
+}
+.user-location-select{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    height: 80vh;
+}
+#user-location-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+#location-change{
+    width: 100%;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: var(--bg-secondary-color);
+    color: var(--text-color);
+}
+#location-chnage-btn{
+    width: 100px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-weight: 600;
+    background-color: var(--sub-color);
+}
+@media only screen and (max-width: 800px) {
+    .user-location-map{
+        display: none;
+    }
+}
