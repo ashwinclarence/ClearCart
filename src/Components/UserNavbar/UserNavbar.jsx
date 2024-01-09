@@ -15,6 +15,7 @@ function UserNavbar() {
     const [userStatus, setUserStatus] = useState(false)
     const [username, setUsername] = useState('')
     const [navUserProfile, setNavUserProfile] = useState('')
+    const [isSeller, setIsSeller] = useState(false)
     // function toggle sidebar
     const showSidebar = () => {
         setSidebar(!sidebar)
@@ -49,6 +50,7 @@ function UserNavbar() {
             snapshot.docs.forEach((doc) => {
                 if (auth.currentUser.uid === doc.data().userId) {
                     setNavUserProfile(doc.data().profileImage)
+                    setIsSeller(doc.data().iSseller)
                 }
             })
         }).catch(err => {
@@ -139,7 +141,8 @@ function UserNavbar() {
 
                     <li className="profile-links">
                         <i className="fa-solid fa-plus"></i>
-                        <Link to='/register-sell-product' className='view-profile'>Become a seller</Link>
+                        {isSeller? <Link to='/sell-product' className='view-profile'>sell Product</Link>: <Link to='/register-sell-product' className='view-profile'>Become a seller</Link>}
+                       
                     </li>
                     <li className="profile-links part">
                         <i className="fa-solid fa-tags"></i>

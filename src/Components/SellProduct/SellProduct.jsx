@@ -7,7 +7,7 @@ import { auth, itemRef, storage } from '../../Firebase/config'
 import { addDoc } from 'firebase/firestore'
 import Loader from '../Loader/loader'
 function SellProduct() {
-    const [loader,setloader]=useState(false)
+    const [loader, setloader] = useState(false)
     const [proName, setProName] = useState('')
     const [proPrice, setProPrice] = useState('')
     const [proCompanyName, setProCompanyName] = useState('')
@@ -16,6 +16,7 @@ function SellProduct() {
     const [proImage, setProImage] = useState('')
     const date = new Date()
     const navigate = useNavigate()
+
     const clearAll = (e) => {
         e.preventDefault()
         setProName('')
@@ -51,7 +52,7 @@ function SellProduct() {
                     sellerName: auth.currentUser.displayName,
                     sellerId: auth.currentUser.uid,
                     productName: proName,
-                    productPrice:Number(proPrice) ,
+                    productPrice: Number(proPrice),
                     productCompany: proCompanyName,
                     productCategory: proCategory,
                     productDescription: proDescription,
@@ -73,7 +74,7 @@ function SellProduct() {
     }
     return (
         <div className="sell-product-container container-fluid">
-              {loader?<Loader/>:""} 
+            {loader ? <Loader /> : ""}
             <form action="" onSubmit={AddSellProduct}>
                 <div className="row sell-product-row">
                     <div className="col-md-6 left-sell-product">

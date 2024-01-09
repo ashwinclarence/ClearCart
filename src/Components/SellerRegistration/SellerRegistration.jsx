@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './SellerRegistration.css'
 import sell1 from '../../images/sell1.png'
 import sell2 from '../../images/sell4.png'
@@ -7,6 +7,8 @@ import sell4 from '../../images/sell2.png'
 import sell5 from '../../images/sell5.png'
 import sell6 from '../../images/sell6.png'
 import { useNavigate } from 'react-router-dom'
+import { doc, getDocs, updateDoc } from 'firebase/firestore'
+import { auth, db, userRef } from '../../Firebase/config'
 function SellerRegistration() {
     const navigate = useNavigate()
     const [gst, setGst] = useState('')
@@ -14,17 +16,47 @@ function SellerRegistration() {
     const [location, setLocation] = useState('')
     const [bankAC, setBankAC] = useState('')
     const [IFSC, setIFSC] = useState('')
-    const seller = (e) => {
+    const [users, setusers] = useState('')
+    useEffect(() => {
+        try {
+            getDocs(userRef).then((snapshot) => {
+                const allusers = snapshot.docs.map((doc) => {
+                    return {
+                        ...doc.data(),
+                        id: doc.id
+                    }
+                }).filter((result) => {
+                    return result.userId === auth.currentUser.uid
+                })
+                setusers(allusers)
+            })
+        } catch (error) {
+            console.log(error.message);
+        }
+    }, [])
+    
+    // function to update the collection in firestore
+    const seller = async (e) => {
         e.preventDefault()
-        
-        alert("submited")
-        navigate('/sell-product')
+        const docref = doc(db, "User", users[0].id)
+        console.log(docref);
+        await updateDoc(docref, {
+            iSseller: true,
+            GstNumber: gst,
+            storeName,
+            Storelocation: location,
+            bankAC,
+            IFSC
+        }).then(()=>{
+            alert("Seller Registeration Sucess")
+            navigate('/sell-product')
+        })
     }
-    const showdescription2=(e)=>{
+    const showdescription2 = (e) => {
         e.preventDefault()
-        document.getElementById("seller-description2").style.display="block"
-        document.getElementById("seller-description3").style.display="block"
-        document.getElementById("seller-description-read-more").style.display="none"
+        document.getElementById("seller-description2").style.display = "block"
+        document.getElementById("seller-description3").style.display = "block"
+        document.getElementById("seller-description-read-more").style.display = "none"
     }
     return (
         <div className='seller-register-container container-fluid'>
@@ -32,7 +64,7 @@ function SellerRegistration() {
                 <div className="col-md-6 seller-description">
                     <h3>How to become a seller ?</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est nobis blanditiis maiores distinctio quidem provident vitae beatae voluptates debitis optio. Nam, voluptas vero? Architecto magnam sed repudiandae culpa, sapiente explicabo! <span id='seller-description-read-more' onClick={showdescription2}>Read more</span></p>
-                   
+
                     <p id='seller-description2'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum mollitia neque cupiditate id culpa illum? Deserunt, optio magnam, sit eum neque magni, eaque non vel voluptatem ipsum iste iusto quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione non eius consectetur accusamus rem. Laboriosam eveniet quis a iusto neque, provident, maxime, itaque nam amet hic voluptatibus sed? Est, eveniet! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae labore, in consequatur laboriosam ex quibusdam facere nemo qui unde quis esse architecto obcaecati asperiores! Ea voluptas dolores debitis cum magnam.</p>
                     <p id='seller-description3'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum mollitia neque cupiditate id culpa illum? Deserunt, optio magnam, sit eum neque magni, eaque non vel voluptatem ipsum iste iusto quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione non eius consectetur accusamus rem. Laboriosam eveniet quis a iusto neque, provident, maxime, itaque nam amet hic voluptatibus sed? Est, eveniet! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae labore, in consequatur laboriosam ex quibusdam facere nemo qui unde quis esse architecto obcaecati asperiores! Ea voluptas dolores debitis cum magnam.</p>
                 </div>
