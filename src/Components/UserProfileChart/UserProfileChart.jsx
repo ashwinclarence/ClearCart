@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './UserProfileChart.css'
 import Chart from "react-apexcharts";
 function UserProfileChart() {
@@ -14,7 +14,7 @@ function UserProfileChart() {
     series: [
       {
         name: "Review others gave to you",
-        data: [30, 40, 45, 50, 49],
+        data: [85, 40, 45, 50, 49],
       },
       {
         name: "Review you gave to others",

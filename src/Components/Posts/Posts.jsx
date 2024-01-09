@@ -14,14 +14,14 @@ import c11 from '../../images/pim/c11.PNG'
 import c12 from '../../images/pim/c12.PNG'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { getDocs } from 'firebase/firestore'
+import { onSnapshot } from 'firebase/firestore'
 import { itemRef } from '../../Firebase/config'
 function Posts() {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState('all');
   useEffect(() => {
     try {
-      getDocs(itemRef).then((snapshot) => {
+      onSnapshot(itemRef,(snapshot)=>{
         const allProducts = snapshot.docs.map((doc) => {
           return {
             ...doc.data(),
@@ -112,7 +112,7 @@ function Posts() {
                     </span>
                     <span className='other-view-product'>
                       {obj.productCompany.length >= 30 ? <h5>{obj.productCompany.slice(0, 40)}...</h5> : <h5>{obj.productCompany}</h5>}
-                      {obj.productName.length >= 24 ? <h4 >{obj.productName.slice(0, 30)}....</h4> : <h4>{obj.productName}</h4>}
+                      {obj.productName.length >= 35 ? <h4 >{obj.productName.slice(0, 35)}....</h4> : <h4>{obj.productName}</h4>}
                       <h6><i className="fa-solid fa-indian-rupee-sign"></i> {obj.productPrice.toLocaleString()}</h6>
                       {obj.productDescription.length >= 35 ? <h5 >{obj.productDescription.slice(0, 45)}....</h5> : <h5>{obj.productDescription}</h5>}
                     </span>

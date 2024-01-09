@@ -81,7 +81,7 @@ function UserProfile() {
 
                     <div className="col-md-9 right-user-profile">
                         <div className="right-user-profile-row row">
-                            <UserProfileChart />
+                            <UserProfileChart userID={userid}/>
                         </div>
                     </div>
                 </div>
