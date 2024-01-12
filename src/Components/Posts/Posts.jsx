@@ -29,9 +29,9 @@ function Posts() {
           }
         }).filter((result) => {
           if (category !== 'all') {
-            return result.productCategory === category;
+            return result.productCategory === category && result.productAvailable===true;
           } else {
-            return result
+            return result.productAvailable===true
           }
         })
         setProducts(allProducts)

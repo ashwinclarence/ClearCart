@@ -16,6 +16,7 @@ import AdminLoginPage from "./Pages/AdminLoginPage";
 import AdminOfferImagePage from "./Pages/AdminOfferImagePage";
 import SellerRegisertationPage from "./Pages/SellerRegisertationPage";
 import UserLocationPage from "./Pages/UserLocationPage";
+import SellerProductViewPage from "./Pages/SellerProductViewPage";
 export const Context=React.createContext()
 function App() {
   const [loading, setLoading] = useState(false)
@@ -41,6 +42,7 @@ function App() {
               <Route path='/login' element={<LoginPage />} ></Route>
               <Route path='register-sell-product' element={<SellerRegisertationPage />} ></Route>
               <Route path='/sell-product' element={<SellProductPage />} ></Route>
+              <Route path='/seller-product-view' element={<SellerProductViewPage />} ></Route>
               <Route path='/view-account' element={<UserProfilePage />} ></Route>
               <Route path='/view-my-product' element={<UserViewProductPage/>} ></Route>
               <Route path='/view-cart' element={<UserCartPage/>} ></Route>

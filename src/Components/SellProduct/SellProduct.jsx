@@ -48,6 +48,7 @@ function SellProduct() {
                     star4: 0,
                     star5: 0,
                     productAvailable:false,
+                    PurchaseCount:0
                 }
                 addDoc(itemRef, {
                     sellerName: auth.currentUser.displayName,
@@ -64,7 +65,8 @@ function SellProduct() {
                     star3: 0,
                     star4: 0,
                     star5: 0,
-                    productAvailable:false,
+                    productAvailable:true,
+                    PurchaseCount:0
                 }, docData).then((docRef) => {
                     setloader(false)
                     navigate('/')

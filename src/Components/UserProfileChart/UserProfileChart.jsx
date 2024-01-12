@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import './UserProfileChart.css'
 import Chart from "react-apexcharts";
 function UserProfileChart() {

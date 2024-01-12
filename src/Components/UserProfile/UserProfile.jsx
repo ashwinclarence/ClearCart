@@ -17,7 +17,6 @@ function UserProfile() {
 
     onAuthStateChanged(auth, (user) => {
         try {
-
             SetUsername(user.displayName)
             setEmail(user.email)
             setUserid(user.uid)
@@ -31,11 +30,11 @@ function UserProfile() {
             console.log(error);
         }
     })
+    
     // function get current user information from firebase
     getDocs(userRef).then((snapshot) => {
         snapshot.docs.forEach((doc) => {
             if (userid === doc.data().userId) {
-                console.log(userid);
                 setNavUserProfile(doc.data().profileImage)
                 setPhone(doc.data().phoneNumber)
                 setLocation(doc.data().location)
