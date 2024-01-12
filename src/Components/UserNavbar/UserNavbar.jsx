@@ -21,7 +21,12 @@ function UserNavbar() {
         setSidebar(!sidebar)
     }
     const changeTheme = () => {
-        setTheme(!theme)
+        try {
+            setTheme(!theme)
+        } catch (error) {
+            console.log(error);
+        }
+       
     }
     // function to logout user
     const userLogout = (e) => {

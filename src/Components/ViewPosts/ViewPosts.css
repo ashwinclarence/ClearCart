@@ -1,5 +1,5 @@
 .view-post-container{
-    background-color: var(--bg-color);
+    background-color: var(--bg-secondary-color);
     color: var(--text-color);
     padding: 10px 0;
 }
@@ -11,34 +11,30 @@
     justify-content: center;
 }
 .view-post-img-box{
-    background-color: var(--bg-secondary-color);
-    border-radius: 10px;
     overflow: hidden;
+    height: 350px;
+    padding: 10px;
 }
 .view-post-img-box img{
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: scale-down;
     display: block;
     margin: auto;
 }
 .view-post-name-box{
-    background-color: var(--bg-secondary-color);
     font-size: 13px;
-    border-radius: 10px;
     overflow: hidden;
-    padding: 10px;
+    padding: 20px;
     text-align: justify;
 }
 .view-post-description-box{
-    background-color: var(--bg-secondary-color);
-    border-radius: 10px;
     overflow: hidden;
     padding: 10px;
     text-align: justify;
 }
+
 .view-post-other-box{
-   
     overflow: hidden;
     padding: 10px;
     display: flex;
@@ -85,9 +81,10 @@
     margin: 10px;
     color: var(--black-color);
 }
+.fa-share{
+    color: var(--black-color) !important;
+}
 .view-post-other-box-inner{
-    background-color: var(--bg-secondary-color);
-    border-radius: 10px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -154,6 +151,10 @@
     color: var(--text-color);
 }
 #star-input-textarea::placeholder{
+    color: var(--text-color);
+}
+.fa-solid{
+    width: 25px;
     color: var(--text-color);
 }
 @media only screen and (max-width: 800px) {

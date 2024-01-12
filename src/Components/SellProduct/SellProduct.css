@@ -18,11 +18,10 @@
     height: 40px;
     border: none;
     outline: none;
-    border-radius: 5px;
     padding-left: 10px;
     background: transparent;
     color: var(--text-color);
-    border-bottom: 2px solid var(--text-color);
+   border-bottom: 1px solid var(--border-color);
 }
 
 #productLocation,
@@ -31,11 +30,11 @@
     height: 40px;
     border: none;
     outline: none;
-    border-radius: 5px;
+  
     padding-left: 10px;
     background: transparent;
     color: var(--text-color);
-    border-bottom: 2px solid var(--text-color);
+   border-bottom: 1px solid var(--border-color);
 }
 
 .left-sell-product option {
@@ -48,6 +47,7 @@
     color: var(--text-color);
     font-weight: 600;
 }
+
 
 .left-sell-product textarea {
     width: 90%;
@@ -84,11 +84,13 @@
 
 .right-sell-product input {
     width: 90%;
-    margin-top: 20px;
-    resize: none;
-    background: transparent;
-    border-radius: 5px;
+    height: 40px;
+    border: none;
+    outline: none;
     padding-left: 10px;
+    background: transparent;
+    color: var(--text-color);
+   border-bottom: 1px solid var(--border-color);
 
 }
 

@@ -99,7 +99,7 @@ function Posts() {
             return (
 
               <div className="col-md-3 product-container" key={index}>
-                <Link to='/view-post' className='post-link'>
+                <Link to='/view-post' className='post-link' state={{ proid: obj.id }}>
                   <div className="product-img-box">
                     <img src={obj.productImage} alt="" />
                   </div>

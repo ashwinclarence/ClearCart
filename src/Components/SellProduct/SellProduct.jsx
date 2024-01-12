@@ -9,10 +9,12 @@ import Loader from '../Loader/loader'
 function SellProduct() {
     const [loader, setloader] = useState(false)
     const [proName, setProName] = useState('')
+    const [proMarketPrice, setProMarketPrice] = useState('')
     const [proPrice, setProPrice] = useState('')
     const [proCompanyName, setProCompanyName] = useState('')
     const [proCategory, setProCategory] = useState('')
     const [proDescription, setProDescription] = useState('')
+    const [prodelivery, setProdelivery] = useState('')
     const [proImage, setProImage] = useState('')
     const date = new Date()
     const navigate = useNavigate()
@@ -20,6 +22,7 @@ function SellProduct() {
     const clearAll = (e) => {
         e.preventDefault()
         setProName('')
+        setProMarketPrice('')
         setProPrice('')
         setProCompanyName('')
         setProCategory('')
@@ -28,53 +31,72 @@ function SellProduct() {
     }
     const AddSellProduct = async (e) => {
         e.preventDefault()
-        setloader(true)
-        const imageStorageRef = ref(storage, `ProductImage/${auth.currentUser.uid}/${Date.now()}`)
-        await uploadBytes(imageStorageRef, proImage).then((snapshot) => {
-            getDownloadURL(snapshot.ref).then((url) => {
-                const docData = {
-                    sellerName: "authcurrentUserdisplayName",
-                    sellerId: "authcurrentUseruid",
-                    productName: "proName",
-                    productPrice: 25,
-                    productCompany: "proCompanyName",
-                    productCategory: "proCategory",
-                    productDescription: "proDescription",
-                    productUploaded: "datetoDateString",
-                    productImage: "url",
-                    star1: 0,
-                    star2: 0,
-                    star3: 0,
-                    star4: 0,
-                    star5: 0,
-                    productAvailable:false,
-                    PurchaseCount:0
-                }
-                addDoc(itemRef, {
-                    sellerName: auth.currentUser.displayName,
-                    sellerId: auth.currentUser.uid,
-                    productName: proName,
-                    productPrice: Number(proPrice),
-                    productCompany: proCompanyName,
-                    productCategory: proCategory,
-                    productDescription: proDescription,
-                    productUploaded: date.toDateString(),
-                    productImage: url,
-                    star1: 0,
-                    star2: 0,
-                    star3: 0,
-                    star4: 0,
-                    star5: 0,
-                    productAvailable:true,
-                    PurchaseCount:0
-                }, docData).then((docRef) => {
-                    setloader(false)
-                    navigate('/')
-                    clearAll()
-                    alert("product Add with id " + docRef.id)
+        if(proPrice<proMarketPrice){
+            if(prodelivery<=10){
+
+        
+            setloader(true)
+            const imageStorageRef = ref(storage, `ProductImage/${auth.currentUser.uid}/${Date.now()}`)
+            await uploadBytes(imageStorageRef, proImage).then((snapshot) => {
+                getDownloadURL(snapshot.ref).then((url) => {
+                    const docData = {
+                        sellerName: "authcurrentUserdisplayName",
+                        sellerId: "authcurrentUseruid",
+                        productName: "proName",
+                        productPrice: 25,
+                        productCompany: "proCompanyName",
+                        productCategory: "proCategory",
+                        productDescription: "proDescription",
+                        productUploaded: "datetoDateString",
+                        productImage: "url",
+                        star1: 0,
+                        star2: 0,
+                        star3: 0,
+                        star4: 0,
+                        star5: 0,
+                        productAvailable:false,
+                        PurchaseCount:0,
+                        productMarketPrice:0,
+                        productDeliveryDays:0
+                    }
+                    addDoc(itemRef, {
+                        sellerName: auth.currentUser.displayName,
+                        sellerId: auth.currentUser.uid,
+                        productName: proName,
+                        productPrice: Number(proPrice),
+                        productCompany: proCompanyName,
+                        productCategory: proCategory,
+                        productDescription: proDescription,
+                        productUploaded: date.toDateString(),
+                        productImage: url,
+                        star1: 0,
+                        star2: 0,
+                        star3: 0,
+                        star4: 0,
+                        star5: 0,
+                        productAvailable:true,
+                        PurchaseCount:0,
+                        productMarketPrice:proMarketPrice,
+                        productDeliveryDays:prodelivery
+                    }, docData).then((docRef) => {
+                        setloader(false)
+                        navigate('/')
+                        clearAll()
+                        alert("product Add with id " + docRef.id)
+                    })
                 })
             })
-        })
+        }else{
+            alert("Maximum number of days to delivery a product is 10")
+            document.getElementById("pro-delivery-label").style.color="#ff0000"
+            setProdelivery('')
+        }
+        }else{
+            alert("Your Product Price Must be lower than"+proMarketPrice)
+            document.getElementById("product-price-label").style.color="#ff0000"
+            setProPrice('')
+        }
+
     }
     return (
         <div className="sell-product-container container-fluid">
@@ -82,7 +104,7 @@ function SellProduct() {
             <form action="" onSubmit={AddSellProduct}>
                 <div className="row sell-product-row">
                     <div className="col-md-6 left-sell-product">
-                        <label htmlFor="productName">Product Name</label>
+                        <label htmlFor="productName">Name of the Product</label>
                         <input
                             type="text"
                             name="productName"
@@ -91,7 +113,16 @@ function SellProduct() {
                             value={proName}
                             onChange={(e => { setProName(e.target.value) })}
                             required />
-                        <label htmlFor="productprice">Product Price</label>
+                        <label htmlFor="productmarketprice">Market Price of the Product</label>
+                        <input
+                            type="number"
+                            name="productmarketprice"
+                            id="productmarketprice"
+                            placeholder='Enter Product Price'
+                            value={proMarketPrice}
+                            onChange={(e => { setProMarketPrice(e.target.value) })}
+                            required />
+                        <label htmlFor="productprice" id='product-price-label'>Your Price <i className="fa-solid fa-circle-exclamation" title='Your price must be lower than market price'></i></label>
                         <input
                             type="number"
                             name="productprice"
@@ -141,6 +172,15 @@ function SellProduct() {
                             required></textarea>
                     </div>
                     <div className="col-md-6 right-sell-product">
+                    <label htmlFor="prodelivery" id='pro-delivery-label'>Maximum number of days to delivery this product</label>
+                        <input
+                            type="number"
+                            name="prodelivery"
+                            id="prodelivery"
+                            placeholder='number of days'
+                            value={prodelivery}
+                            onChange={(e => { setProdelivery(e.target.value) })}
+                            required />
                         <label htmlFor="">Product Picture</label><br />
                         {proImage ? <img src={URL.createObjectURL(proImage)} className='product-image-prev' /> : <img src={defaultuser} className='product-image-prev' />}
                         <input
