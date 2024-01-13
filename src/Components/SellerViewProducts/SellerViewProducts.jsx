@@ -1,12 +1,14 @@
 
 import { deleteDoc, doc, getDoc, updateDoc } from 'firebase/firestore';
-import defaultImg from '../../images/noimg.jpg'
+import defaultImg from '../../images/no-image.png'
 import './SellerViewProducts.css'
 import { db } from '../../Firebase/config';
 import { useEffect, useState } from 'react';
 import ProductReviewChart from '../ProductReviewChart/ProductReviewChart';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Loader from '../Loader/loader';
 function SellerViewProducts() {
+  const [loader,setLoader]=useState(false)
   let date = new Date()
   let newdate = date;
   let { state } = useLocation()
@@ -24,24 +26,28 @@ function SellerViewProducts() {
     } catch (error) {
       console.log(error.message);
     }
-  }, [state.id])
+  }, [])
   // function to make the product unavailable
   const makeUnAvailable = async () => {
+    setLoader(true)
     const docref = doc(db, "Products", state.id)
     await updateDoc(docref, {
       productAvailable: false
     }).then(() => {
-      alert("The product is now Unavailable")
+      // alert("The product is now Unavailable")
+      setLoader(false)
       location.reload();
     })
   }
   // function to make the product available
   const makeAvailable = async () => {
+    setLoader(true)
     const docref = doc(db, "Products", state.id)
     await updateDoc(docref, {
       productAvailable: true
     }).then(() => {
-      alert("The product is now Available")
+      // alert("The product is now Available")
+      setLoader(false)
       location.reload();
     }).catch((err)=>{
       console.log(err.message);
@@ -63,6 +69,7 @@ function SellerViewProducts() {
 
   return (
     <div className="seller-view-product-container container-fluid">
+         {loader ? <Loader /> : ""}
       <div className="row seller-view-product-row">
         <div className="col-md-5 seller-view-product-img-box">
           <button className='like-button'><i className="fa-solid fa-heart"></i></button>
@@ -72,7 +79,7 @@ function SellerViewProducts() {
           <h5>{products.productName}</h5>
           <p>Product seller {products.sellerName}</p>
           <p >{products.productAvailable ? <p id="product-available"><i className="fa-solid fa-square-check"></i> Product is currently available to Users</p> : <p id="product-unavailable"><i className="fa-solid fa-rectangle-xmark"></i> Product is currently unavailable to Users</p>} </p>
-          <h5><i className="fa-solid fa-indian-rupee-sign"></i> {products.productPrice.toLocaleString()}</h5>
+          <h5><i className="fa-solid fa-indian-rupee-sign"></i> {products.productPrice}</h5>
           <p>if you order within {date.toDateString()} the item will delivery on {newdate.toDateString()}</p>
           <p>{products.PurchaseCount} users brought this item</p>
         </div>

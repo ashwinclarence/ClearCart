@@ -19,9 +19,10 @@ import { itemRef } from '../../Firebase/config'
 function Posts() {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState('all');
+  const [add, setAdd] = useState(true)
   useEffect(() => {
     try {
-      onSnapshot(itemRef,(snapshot)=>{
+      onSnapshot(itemRef, (snapshot) => {
         const allProducts = snapshot.docs.map((doc) => {
           return {
             ...doc.data(),
@@ -29,9 +30,9 @@ function Posts() {
           }
         }).filter((result) => {
           if (category !== 'all') {
-            return result.productCategory === category && result.productAvailable===true;
+            return result.productCategory === category && result.productAvailable === true;
           } else {
-            return result.productAvailable===true
+            return result.productAvailable === true
           }
         })
         setProducts(allProducts)
@@ -43,56 +44,57 @@ function Posts() {
   return (
     <div className='container-fluid posts-container'>
       <div className="row home-category-box">
-        <div className="home-category" onClick={() => setCategory('all')}>
+        <div className="home-category" onClick={() => { setCategory('all'); setAdd(true) }}>
           <img src={c10} alt="" />
           <p>Offer</p>
         </div>
-        <div className="home-category" onClick={() => setCategory('Mobiles')}>
+        <div className="home-category" onClick={() => { setCategory('Mobiles'); setAdd(false) }}>
           <img src={c1} alt="" />
           <p>Mobiles</p>
         </div>
-        <div className="home-category" onClick={() => setCategory('Electronics')}>
+        <div className="home-category" onClick={() => { setCategory('Electronics'); setAdd(false) }}>
           <img src={c2} alt="" />
           <p>Electronics</p>
         </div>
-        <div className="home-category" onClick={() => setCategory('Fashion')}>
+        <div className="home-category" onClick={() => { setCategory('Fashion'); setAdd(false) }}>
           <img src={c3} alt="" />
           <p>Fashion</p>
         </div>
-        <div className="home-category" onClick={() => setCategory('Food Items')}>
+        <div className="home-category" onClick={() => {setCategory('Food Items'); setAdd(false)}}>
           <img src={c4} alt="" />
           <p>food</p>
         </div>
-        <div className="home-category" onClick={() => setCategory('Home Appliances')}>
+        <div className="home-category" onClick={() => {setCategory('Home Appliances'); setAdd(false)}}>
           <img src={c5} alt="" />
           <p>Home</p>
         </div>
-        <div className="home-category" onClick={() => setCategory('Beauty Products')}>
+        <div className="home-category" onClick={() => {setCategory('Beauty Products'); setAdd(false)}}>
           <img src={c6} alt="" />
           <p>Beauty</p>
         </div>
-        <div className="home-category" onClick={() => setCategory('Furniture')}>
+        <div className="home-category" onClick={() => {setCategory('Furniture'); setAdd(false)}}>
           <img src={c7} alt="" />
           <p>Furniture</p>
         </div>
-        <div className="home-category" onClick={() => setCategory('Books')}>
+        <div className="home-category" onClick={() => {setCategory('Books'); setAdd(false)}}>
           <img src={c8} alt="" />
           <p>Books</p>
         </div>
-        <div className="home-category" onClick={() => setCategory('Toys')}>
+        <div className="home-category" onClick={() => {setCategory('Toys'); setAdd(false)}}>
           <img src={c9} alt="" />
           <p>Toys</p>
         </div>
-        <div className="home-category" onClick={() => setCategory('Tools')}>
+        <div className="home-category" onClick={() => {setCategory('Tools'); setAdd(false)}}>
           <img src={c11} alt="" />
-          <p>Tools</p>
+          <p>TOOLS</p>
         </div>
-        <div className="home-category" onClick={() => setCategory('Sports')}>
+        <div className="home-category" onClick={() => {setCategory('Sports'); setAdd(false)}}>
           <img src={c12} alt="" />
           <p>Sports</p>
         </div>
       </div>
-      <Add />
+      {add ? <Add /> : ""}
+
       <div className="row  posts-row">
         {
           products.map((obj, index) => {
@@ -105,10 +107,9 @@ function Posts() {
                   </div>
                   <div className="product-description-box">
                     <span className='mobile-view-product'>
-                      {obj.productCompany.length >= 30 ? <h5>{obj.productCompany.slice(0, 55)}...</h5> : <h5>{obj.productCompany}</h5>}
-                      {obj.productName.length >= 50 ? <h4>{obj.productName.slice(0, 40)}....</h4> : <h4>{obj.productName}</h4>}
+                      <h5> {obj.productCompany}</h5>
                       <h6><i className="fa-solid fa-indian-rupee-sign"></i> {obj.productPrice.toLocaleString()}</h6>
-                      {obj.productDescription.length >= 50 ? <h5 >{obj.productDescription.slice(0, 40)}....</h5> : <h5>{obj.productDescription}</h5>}
+                      <h4>{obj.productName}</h4>
                     </span>
                     <span className='other-view-product'>
                       {obj.productCompany.length >= 30 ? <h5>{obj.productCompany.slice(0, 40)}...</h5> : <h5>{obj.productCompany}</h5>}

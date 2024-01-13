@@ -1,10 +1,10 @@
 import './ViewPosts.css'
-import UserViewProducts from '../UserViewProducts/UserViewProducts'
 import ProductReviewChart from '../ProductReviewChart/ProductReviewChart'
 import { useEffect, useState } from 'react'
 import { doc, getDoc } from 'firebase/firestore'
 import { db } from '../../Firebase/config'
 import { useLocation } from 'react-router-dom'
+import SimilarProducts from '../SimilarProducts/SimilarProducts'
 function ViewPosts() {
   // this state holds the id of the current product from posts.jsx
   let { state } = useLocation()
@@ -83,11 +83,11 @@ useEffect(()=>{
           <h5>{products.productCompany} </h5>
           <h5>{products.productName} </h5>
           <p>product seller {products.sellerName}</p>
-          <h5><i className="fa-solid fa-indian-rupee-sign"></i><span >{products.productPrice}</span></h5>
-          <p><i className="fa-solid fa-hand-holding-dollar"></i><span>{savingsAmount.toLocaleString()}% Off</span></p>
-          {products.productPrice>=500?<p><i className="fa-solid fa-truck"></i>Eligible for FREE Shipping</p>:<p ><i className="fa-solid fa-truck"></i>Products above 500 Rs are eligible for free shipping</p>}
-          <p><i className="fa-solid fa-clock"></i>If you order Today the item will delivery on {date.toDateString()}</p>
-          {products.PurchaseCount===0?<p><i className="fa-solid fa-handshake"></i>Be the first one who purchase this product</p>: <p><i className="fa-solid fa-box-open"></i>{products.PurchaseCount} users Purchased this products</p>}
+          <h5><i className="fa-solid view-post-icons fa-indian-rupee-sign"></i><span >{products.productPrice}</span></h5>
+          <p><i className="fa-solid view-post-icons fa-hand-holding-dollar"></i><span>{savingsAmount.toLocaleString()}% Off</span></p>
+          {products.productPrice>=500?<p><i className="fa-solid view-post-icons fa-truck"></i>Eligible for FREE Shipping</p>:<p ><i className="fa-solid view-post-icons fa-truck"></i>Products above 500 Rs are eligible for free shipping</p>}
+          <p><i className="fa-solid view-post-icons fa-clock"></i>If you order Today the item will delivery on {date.toDateString()}</p>
+          {products.PurchaseCount===0?<p><i className="fa-solid view-post-icons fa-handshake"></i>Be the first one who purchase this product</p>: <p><i className="fa-solid fa-box-open"></i>{products.PurchaseCount} users Purchased this products</p>}
 
         </div>
       </div>
@@ -190,8 +190,8 @@ useEffect(()=>{
          <p>{products.productDescription}</p>
         </div>
       </div>
-      <h5 id='similar-products'>Similar products</h5>
-      <UserViewProducts />
+      <h5 id='similar-products'>Similar {products.productCategory}</h5>
+      <SimilarProducts proCategory={products.productCategory} currentProId={state.proid}/>
     </div>
   )
 }

@@ -1,0 +1,19 @@
+.go-end-button-container{
+    background: transparent;
+}
+.go-end-button-row{
+    position: fixed;
+    bottom: 0;
+    right:10px;
+}
+#go-end-button{
+    border: none;
+    outline: none;
+    padding: 10px;
+    background-color: transparent;
+    font-size: 40px;
+    display: none;
+}
+.fa-circle-up{
+    color: var(--sub-color);
+}

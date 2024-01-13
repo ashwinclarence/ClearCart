@@ -2,7 +2,7 @@ import './UserProfile.css'
 import UserProfileChart from '../UserProfileChart/UserProfileChart'
 import { getDocs } from 'firebase/firestore'
 import { auth, userRef } from '../../Firebase/config'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { onAuthStateChanged, sendEmailVerification } from 'firebase/auth'
 import UserViewProducts from '../UserViewProducts/UserViewProducts'
 function UserProfile() {
@@ -15,22 +15,25 @@ function UserProfile() {
     const [navUserProfile, setNavUserProfile] = useState('')
     const [joinDate, setJoinDate] = useState('')
 
-    onAuthStateChanged(auth, (user) => {
-        try {
-            SetUsername(user.displayName)
-            setEmail(user.email)
-            setUserid(user.uid)
-            if (user.emailVerified) {
-                setEmailVerify(true)
-
-            } else {
-                setEmailVerify(false)
+    // using this function cause page-not-responding
+    useEffect(()=>{
+        onAuthStateChanged(auth, (user) => {
+            try {
+                SetUsername(user.displayName)
+                setEmail(user.email)
+                setUserid(user.uid)
+                if (user.emailVerified) {
+                    setEmailVerify(true)
+                } else {
+                    setEmailVerify(false)
+                }
+            } catch (error) {
+                console.log(error);
             }
-        } catch (error) {
-            console.log(error);
-        }
-    })
+        })
+    },[])
     
+
     // function get current user information from firebase
     getDocs(userRef).then((snapshot) => {
         snapshot.docs.forEach((doc) => {
