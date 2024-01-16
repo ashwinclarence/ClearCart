@@ -1,10 +1,11 @@
 import './ViewPosts.css'
 import ProductReviewChart from '../ProductReviewChart/ProductReviewChart'
-import { useEffect, useState } from 'react'
-import { doc, getDoc } from 'firebase/firestore'
+import { useContext, useEffect, useState } from 'react'
+import { arrayUnion, doc, getDoc, increment, updateDoc } from 'firebase/firestore'
 import { db } from '../../Firebase/config'
 import { useLocation } from 'react-router-dom'
 import SimilarProducts from '../SimilarProducts/SimilarProducts'
+import { AuthContext } from '../../Store/FirebaseContext'
 function ViewPosts() {
   // this state holds the id of the current product from posts.jsx
   let { state } = useLocation()
@@ -12,13 +13,14 @@ function ViewPosts() {
   const [review, setReview] = useState('')
   const [reviewDesc, setReviewDdesc] = useState('')
   const [products, setproducts] = useState('')
-  const [savingsAmount,setsavingsAmount]=useState(0)
+  const [savingsAmount, setsavingsAmount] = useState(0)
+  const { CurrentUserID } = useContext(AuthContext)
 
   // date atpresent
-  let date=new Date()
+  let date = new Date()
   // covert date after 5 days
- date.setDate(date.getDate() + 5);
- 
+  date.setDate(date.getDate() + 5);
+
 
   //useEffect to reach the top of the page while loading
   useEffect(() => {
@@ -33,7 +35,7 @@ function ViewPosts() {
       setproducts(docsnap.data())
     }
     getproducts()
-    
+
   }, [])
 
 
@@ -62,17 +64,52 @@ function ViewPosts() {
     document.getElementById("product-review-chart").style.display = 'block'
     setReviewDdesc('')
   }
-useEffect(()=>{
-  let a=products.productMarketPrice
-  let b=products.productPrice
-  let diff=a-b
-  let avg=(a+b)/2
-  let ratio=(diff/avg)*100
-  setsavingsAmount(ratio)
-},[products.productMarketPrice,products.productPrice])
-    
-  
-  
+  useEffect(() => {
+    let a = products.productMarketPrice
+    let b = products.productPrice
+    let diff = a - b
+    let avg = (a + b) / 2
+    let ratio = (diff / avg) * 100
+    setsavingsAmount(ratio)
+  }, [products.productMarketPrice, products.productPrice])
+
+  useEffect(() => {
+
+  })
+  // function to update the collection in firestore
+  const addToCart = async (e) => {
+    e.preventDefault();
+
+    const docRef = doc(db, 'User', CurrentUserID);
+    const userDoc = await getDoc(docRef);
+
+    // Check if the product already exists in the cart
+    const existingProductIndex = userDoc.data().Cart.findIndex((element) => element.ProductID === state.proid);
+    if (existingProductIndex !== -1) {
+      // Product already exists in the cart, update the ProductCount
+      const updatedCart = [...userDoc.data().Cart];
+      updatedCart[existingProductIndex].ProductCount += 1;
+
+      await updateDoc(docRef, {
+        Cart: updatedCart,
+      }).then(() => {
+        alert('Product count updated in the cart');
+      });
+    } else {
+      // Add the new product to the cart
+      await updateDoc(docRef, {
+        Cart: arrayUnion({
+          ProductID: state.proid,
+          ProductCount: 1,
+        }),
+      }).then(() => {
+        alert('Product added to cart');
+      });
+    }
+  };
+
+
+
   return (
     <div className="view-post-container container-fluid">
       <div className="row view-post-row">
@@ -85,21 +122,21 @@ useEffect(()=>{
           <p>product seller {products.sellerName}</p>
           <h5><i className="fa-solid view-post-icons fa-indian-rupee-sign"></i><span >{products.productPrice}</span></h5>
           <p><i className="fa-solid view-post-icons fa-hand-holding-dollar"></i><span>{savingsAmount.toLocaleString()}% Off</span></p>
-          {products.productPrice>=500?<p><i className="fa-solid view-post-icons fa-truck"></i>Eligible for FREE Shipping</p>:<p ><i className="fa-solid view-post-icons fa-truck"></i>Products above 500 Rs are eligible for free shipping</p>}
+          {products.productPrice >= 500 ? <p><i className="fa-solid view-post-icons fa-truck"></i>Eligible for FREE Shipping</p> : <p ><i className="fa-solid view-post-icons fa-truck"></i>Products above 500 Rs are eligible for free shipping</p>}
           <p><i className="fa-solid view-post-icons fa-clock"></i>If you order Today the item will delivery on {date.toDateString()}</p>
-          {products.PurchaseCount===0?<p><i className="fa-solid view-post-icons fa-handshake"></i>Be the first one who purchase this product</p>: <p><i className="fa-solid fa-box-open"></i>{products.PurchaseCount} users Purchased this products</p>}
+          {products.PurchaseCount === 0 ? <p><i className="fa-solid view-post-icons fa-handshake"></i>Be the first one who purchase this product</p> : <p><i className="fa-solid fa-box-open"></i>{products.PurchaseCount} users Purchased this products</p>}
 
         </div>
       </div>
       <div className="row view-post-row">
         <div className="col-md-5 view-post-other-box">
           <div className="view-posts-action-box">
-            <button id='add-to-cart'>Add to Cart</button>
+            <button id='add-to-cart' onClick={addToCart}>Add to Cart</button>
             <button id='buy-now'>Buy now</button>
             <button id='share'>Share <i className="fa-solid fa-share"></i></button>
           </div>
           <div className="view-post-other-box-inner">
-            <span id='product-review-chart'><ProductReviewChart star1={products.star1} star2={products.star2} star3={products.star3} star4={products.star4} star5={products.star5}/></span> 
+            <span id='product-review-chart'><ProductReviewChart star1={products.star1} star2={products.star2} star3={products.star3} star4={products.star4} star5={products.star5} /></span>
             <i id='write-a-review' onClick={writeReview}>Write a product review</i>
             <form action="" id='review-form' onSubmit={reviewForm}>
               <div className="star-checkbox">
@@ -187,11 +224,11 @@ useEffect(()=>{
         </div>
         <div className="col-md-6 view-post-description-box">
           <h4>About this item</h4>
-         <p>{products.productDescription}</p>
+          <p>{products.productDescription}</p>
         </div>
       </div>
       <h5 id='similar-products'>Similar {products.productCategory}</h5>
-      <SimilarProducts proCategory={products.productCategory} currentProId={state.proid}/>
+      <SimilarProducts proCategory={products.productCategory} currentProId={state.proid} />
     </div>
   )
 }

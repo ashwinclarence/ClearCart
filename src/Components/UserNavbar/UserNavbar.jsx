@@ -129,11 +129,10 @@ function UserNavbar() {
                     <li className="profile-links">
                         <i className="fa-regular fa-eye"></i>
                         {userStatus? <Link to='/view-account' className='view-profile'>view Account</Link>: <Link to='/login' className='view-profile'>view Account</Link>}
-                       
                     </li>
                     <li className="profile-links">
                         <i className="fa-brands fa-opencart"></i>
-                        <Link to='/view-cart' className='view-profile'>View Orders</Link>
+                        {userStatus?<Link to='/view-cart' className='view-profile'>View Orders</Link>:<Link to='/login' className='view-profile'>View Orders</Link>}
                     </li>
                     {auth.currentUser ? <li className="profile-links part">
                         <i className="fa-solid fa-right-from-bracket"></i>

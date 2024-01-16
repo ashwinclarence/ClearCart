@@ -15,7 +15,6 @@ function SimilarProducts({proCategory,currentProId}) {
               id: doc.id
             }
           }).filter((result) => {
-            console.log(result);
               return result.productCategory===proCategory && result.id!==currentProId
           })
           setProducts(allProducts)
@@ -29,7 +28,6 @@ function SimilarProducts({proCategory,currentProId}) {
         <div className="row  similar-products-row">
           {
             products.map((obj, index) => {
-                console.log(obj);
               return (
   
                 <div className="col-md-3  similar-products-box" key={index}>
