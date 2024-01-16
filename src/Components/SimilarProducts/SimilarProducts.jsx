@@ -22,7 +22,7 @@ function SimilarProducts({proCategory,currentProId}) {
       } catch (error) {
         console.log(error.message);
       }
-    }, [proCategory])
+    }, [proCategory,currentProId])
     return (
       <div className='container-fluid similar-products-container'>
         <div className="row  similar-products-row">

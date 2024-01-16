@@ -25,7 +25,7 @@
 
 .cart-item-img img {
     height: 120px;
-    object-fit: cover;
+    object-fit: scale-down;
 }
 
 .cart-item-des {

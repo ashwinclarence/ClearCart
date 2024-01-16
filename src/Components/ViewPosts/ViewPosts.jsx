@@ -1,7 +1,7 @@
 import './ViewPosts.css'
 import ProductReviewChart from '../ProductReviewChart/ProductReviewChart'
 import { useContext, useEffect, useState } from 'react'
-import { arrayUnion, doc, getDoc, increment, updateDoc } from 'firebase/firestore'
+import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../Firebase/config'
 import { useLocation } from 'react-router-dom'
 import SimilarProducts from '../SimilarProducts/SimilarProducts'
@@ -76,7 +76,7 @@ function ViewPosts() {
   useEffect(() => {
 
   })
-  // function to update the collection in firestore
+  // function to add or update the cart in firestore
   const addToCart = async (e) => {
     e.preventDefault();
 
