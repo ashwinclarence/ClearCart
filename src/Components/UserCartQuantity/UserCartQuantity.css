@@ -1,0 +1,22 @@
+.cart-item-action{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#Quantity{
+    border: none;
+    outline: none;
+    width: 50%;
+}
+
+#delete-item{
+    color: var(--border-color);
+    background:none;
+    border: none;
+    outline: none;
+}
+
+

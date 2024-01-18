@@ -3,7 +3,7 @@ import ProductReviewChart from '../ProductReviewChart/ProductReviewChart'
 import { useContext, useEffect, useState } from 'react'
 import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../Firebase/config'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import SimilarProducts from '../SimilarProducts/SimilarProducts'
 import { AuthContext } from '../../Store/FirebaseContext'
 function ViewPosts() {
@@ -14,6 +14,7 @@ function ViewPosts() {
   const [reviewDesc, setReviewDdesc] = useState('')
   const [products, setproducts] = useState('')
   const [savingsAmount, setsavingsAmount] = useState(0)
+  const [alreadyInCart, setalreadyInCart] = useState(false)
   const { CurrentUserID } = useContext(AuthContext)
 
   // date atpresent
@@ -74,7 +75,18 @@ function ViewPosts() {
   }, [products.productMarketPrice, products.productPrice])
 
   useEffect(() => {
+    const checkCart = async () => {
 
+      const docRef = doc(db, 'User', CurrentUserID);
+      const userDoc = await getDoc(docRef);
+      const existingProductIndex = userDoc.data().Cart.findIndex((element) => element.ProductID === state.proid);
+      if (existingProductIndex !== -1) {
+        setalreadyInCart(true)
+      } else {
+        setalreadyInCart(false)
+      }
+    }
+    checkCart()
   })
   // function to add or update the cart in firestore
   const addToCart = async (e) => {
@@ -83,27 +95,17 @@ function ViewPosts() {
     const docRef = doc(db, 'User', CurrentUserID);
     const userDoc = await getDoc(docRef);
 
-    // Check if the product already exists in the cart
     const existingProductIndex = userDoc.data().Cart.findIndex((element) => element.ProductID === state.proid);
-    if (existingProductIndex !== -1) {
-      // Product already exists in the cart, update the ProductCount
-      const updatedCart = [...userDoc.data().Cart];
-      updatedCart[existingProductIndex].ProductCount += 1;
-
-      await updateDoc(docRef, {
-        Cart: updatedCart,
-      }).then(() => {
-        alert('Product count updated in the cart');
-      });
-    } else {
+    // Check if the product already exists in the cart
+    if (existingProductIndex === -1) {
       // Add the new product to the cart
       await updateDoc(docRef, {
         Cart: arrayUnion({
-          ProductID: state.proid,
-          ProductCount: 1,
+          ProductID: state.proid
         }),
       }).then(() => {
         alert('Product added to cart');
+        location.reload()
       });
     }
   };
@@ -131,7 +133,7 @@ function ViewPosts() {
       <div className="row view-post-row">
         <div className="col-md-5 view-post-other-box">
           <div className="view-posts-action-box">
-            <button id='add-to-cart' onClick={addToCart}>Add to Cart</button>
+            {alreadyInCart ?<Link to='/view-cart'> <button id='go-to-cart'>Go to Cart</button></Link>: <button id='add-to-cart' onClick={addToCart}>Add to Cart</button>}
             <button id='buy-now'>Buy now</button>
             <button id='share'>Share <i className="fa-solid fa-share"></i></button>
           </div>

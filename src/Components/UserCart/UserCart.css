@@ -21,6 +21,7 @@
     overflow: hidden;
     height: 150px;
     padding: 10px;
+    text-align: justify;
 }
 
 .cart-item-img img {
@@ -35,39 +36,6 @@
     display: flex;
     flex-direction: column;
     gap:5px;
-}
-.cart-item-action{
-    display: flex;
-    justify-content: flex-start;
-    gap: 10px;
-    margin-top: 10px;
-}
-.cart-item-action input{
-    width: 40px;
-}
-.cart-item-product-price{
-    font-size: 17px;
-    font-weight: 870;
-}
-#delete-item{
-    color: #ff0000;
-    background:none;
-    border: none;
-    outline: none;
-    margin-left: 10px;
-}
-.sold-by{
-    color: var( --border-color);
-}
-.eligible{
-    color: var( --border-color);
-}
-
-/* display none the number increment and decrement dubbton in input type=number*/
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
 }
 
 
@@ -114,6 +82,9 @@ input::-webkit-inner-spin-button {
     width: 50%;
     margin-bottom: 20px;
 }
+.sold-by{
+    color: var( --border-color);
+}
 
 #delivery-address {
     display: none;
@@ -123,7 +94,10 @@ input::-webkit-inner-spin-button {
     background-color: var(--bg-secondary-color);
     border-radius: 10px;
 }
-
+.cart-item-product-price{
+    font-size: 17px;
+    font-weight: 870;
+}
 .right-user-cart label {
     width: 100%;
     font-weight: 700;
@@ -169,6 +143,10 @@ input::-webkit-inner-spin-button {
     flex-direction: column;
     align-items: center;
 
+}
+#shipping-discount{
+    color: green;
+    /* display: none; */
 }
 
 @media only screen and (max-width: 800px) {

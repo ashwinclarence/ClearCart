@@ -1,13 +1,20 @@
 import { useContext, useEffect, useState } from 'react'
 import './UserCart.css'
-import { doc, getDoc, } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../Firebase/config';
 import { AuthContext } from '../../Store/FirebaseContext';
+import UserCartQuantity from '../UserCartQuantity/UserCartQuantity';
 function UserCart() {
     const { CurrentUserID } = useContext(AuthContext)
     const [pincode, setPincode] = useState('')
     const [shipppingAddress, setShipppingAddress] = useState('')
     const [cartDetails, setCartDetails] = useState([]);
+    const [cartProductsList, setCartProductsList] = useState([]);
+    const [sum, setSum] = useState(0)
+    const [discount, setDiscount] = useState(0)
+    const [gst, setgst] = useState(0)
+    const [total, setTotal] = useState(0)
+
     const showDeliveryAddress = (e) => {
         e.preventDefault()
         document.getElementById('delivery-address').style.display = 'block'
@@ -19,13 +26,17 @@ function UserCart() {
             try {
                 const userRef = doc(db, 'User', CurrentUserID);
                 const userDoc = await getDoc(userRef);
-                const cartProducts = userDoc.data().Cart.map(element => element.ProductID);
+                setCartProductsList(userDoc.data().Cart)
 
+                const cartProducts = userDoc.data().Cart.map(element => element.ProductID);
                 // Fetch details for each product in the cart
                 const cartDetailsPromises = cartProducts.map(async productId => {
-                    const productRef = doc(db, 'Products', productId); // Assuming 'Products' is your collection
+                    const productRef = doc(db, 'Products', productId);
                     const productDoc = await getDoc(productRef);
-                    return productDoc.data(); // This assumes the product data is an object
+                    return {
+                        ...productDoc.data(),
+                        id: productDoc.id
+                    }
                 });
 
                 const resolvedCartDetails = await Promise.all(cartDetailsPromises);
@@ -38,7 +49,30 @@ function UserCart() {
 
         getCart();
     }, [CurrentUserID]);
+    useEffect(() => {
+        let temp = []
+        let something = []
+        cartDetails.forEach((element) => {
+            temp.push(element.productPrice)
+        })
+        cartDetails.forEach((element) => {
+            something.push(element.productMarketPrice)
+        })
+        setSum(temp.reduce((a, b) => a + b, 0))
+        setDiscount((something.reduce((a, b) => a + b, 0)) - sum)
+        if(sum===0){
+            setgst(0)
+        }else{
+            if (sum > 500) {
+                setgst(sum * 0.05)
+            } else {
+                setgst((sum + 50) * 0.05)
+            }
+            setTotal(sum + gst)
+        }
+        
 
+    }, [cartDetails, sum, gst])
 
 
     return (
@@ -47,37 +81,21 @@ function UserCart() {
                 <div className="col-md-8 left-user-cart">
                     <div className="cart-item-box container-fluid">
                         {
-                            cartDetails.map((obj, index) => {
+                            cartDetails.map((obj) => {
                                 return (
-                                    <div className="cart-item-row row" key={index}>
+                                    <div className="cart-item-row row" key={obj.id}>
                                         <div className="col-md-3 cart-item-img">
                                             <img src={obj.productImage} alt="" />
                                         </div>
                                         <div className="col-md-6 cart-item-des">
                                             <span>{obj.productName}</span>
                                             <span className='sold-by'><i className="fa-solid fa-handshake"></i> Sold By {obj.sellerName} </span>
-                                            {obj.productPrice >= 500 ? <span className='eligible'><i className="fa-solid fa-truck"></i> Eligible for FREE Shipping</span> : <span className='eligible'><i className="fa-solid fa-truck"></i> Purchase some more items for FREE Shipping</span>}
+                                            <span className='cart-item-product-price'><i className="fa-solid fa-indian-rupee-sign"></i> {obj.productPrice}</span>
 
 
                                         </div>
                                         <div className="col-md-3 p-3">
-                                            <span className='cart-item-product-price'><i className="fa-solid fa-indian-rupee-sign"></i> {obj.productPrice}</span>
-                                            <div className="cart-item-action">
-                                                <label htmlFor="Quantity">Quantity</label>
-                                                <select name="Quantity" id="Quantity">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                    <option value="7">7</option>
-                                                    <option value="8">8</option>
-                                                    <option value="9">9</option>
-                                                    <option value="10">10</option>
-                                                </select>
-                                                <button id='delete-item'><i className="fa-solid fa-trash-can"></i></button>
-                                            </div>
+                                            <UserCartQuantity productsID={obj.id} cartProductsList={cartProductsList} />
                                         </div>
                                     </div>
                                 )
@@ -91,22 +109,22 @@ function UserCart() {
                     <div className="order-summary">
                         <h5>Order Summary</h5>
                         <div className="order-summary-row">
-                            <p>Items :</p><p><i className="fa-solid fa-indian-rupee-sign"></i> 00:00</p>
+                            <p>Items :</p><p id='item-sum'><i className="fa-solid fa-indian-rupee-sign"></i> {sum.toFixed(2)}</p>
                         </div>
                         <div className="order-summary-row">
-                            <p>Shipping and Handling :</p><p><i className="fa-solid fa-indian-rupee-sign"></i> 00:00</p>
+                            <p>Shipping and Handling :</p><p><i className="fa-solid fa-indian-rupee-sign"></i> {sum===0?"00:00":"50:00"} </p>
                         </div>
+                        {sum > 500 ? <div className="order-summary-row" id='shipping-discount'>
+                            <p>Shipping and Handling Discount:</p><p><i className="fa-solid fa-indian-rupee-sign"></i> 50:00</p>
+                        </div> : ""}
                         <div className="order-summary-row">
-                            <p>Total Before Tax :</p><p><i className="fa-solid fa-indian-rupee-sign"></i> 00:00</p>
-                        </div>
-                        <div className="order-summary-row">
-                            <p>Estimated GST/HST :</p><p><i className="fa-solid fa-indian-rupee-sign"></i> 00:00</p>
+                            <p>Estimated GST :</p><p><i className="fa-solid fa-indian-rupee-sign"></i> {gst.toFixed(2)}</p>
                         </div>
                         <div className="order-summary-row" id='discount-order-summary'>
-                            <p>Discount :</p><p><i className="fa-solid fa-indian-rupee-sign"></i> 00:00</p>
+                            <p>You are Saving :</p><p><i className="fa-solid fa-indian-rupee-sign"></i> {discount}</p>
                         </div>
                         <div className="order-summary-row" id='total-order-summary'>
-                            <p>Order Total :</p><p><i className="fa-solid fa-indian-rupee-sign"></i> 00:00</p>
+                            <p>Order Total :</p><p><i className="fa-solid fa-indian-rupee-sign"></i> {total.toFixed(2)}</p>
                         </div>
 
                         <button id='show-delivery-address' onClick={showDeliveryAddress}>Add Delivery Address</button>
