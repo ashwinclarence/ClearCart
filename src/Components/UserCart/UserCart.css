@@ -148,6 +148,9 @@
     color: green;
     /* display: none; */
 }
+#empty-cart{
+    text-align: justify;
+}
 
 @media only screen and (max-width: 800px) {
     .cart-item-row {

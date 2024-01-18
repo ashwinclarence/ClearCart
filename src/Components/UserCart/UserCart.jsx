@@ -60,9 +60,9 @@ function UserCart() {
         })
         setSum(temp.reduce((a, b) => a + b, 0))
         setDiscount((something.reduce((a, b) => a + b, 0)) - sum)
-        if(sum===0){
+        if (sum === 0) {
             setgst(0)
-        }else{
+        } else {
             if (sum > 500) {
                 setgst(sum * 0.05)
             } else {
@@ -70,7 +70,7 @@ function UserCart() {
             }
             setTotal(sum + gst)
         }
-        
+
 
     }, [cartDetails, sum, gst])
 
@@ -79,7 +79,27 @@ function UserCart() {
         <div className="user-cart-container container-fluid">
             <div className="user-cart-row row">
                 <div className="col-md-8 left-user-cart">
+
                     <div className="cart-item-box container-fluid">
+
+                        {cartDetails.length === 0 ?
+                            <span id='empty-cart'>
+                                <h4>Your cart is Empty</h4>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque soluta minima numquam assumenda, consequatur beatae iste maiores culpa impedit quis repellendus dicta consectetur labore quam ut nobis. Recusandae, expedita at. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, odit! Magni voluptate molestias non voluptatibus tempore consequuntur minima, corrupti asperiores recusandae cupiditate ut? Nisi repellat, molestias optio animi cupiditate explicabo.</p>
+                                <ul>
+                                    <li>Mobiles</li>
+                                    <li>Electronincs</li>
+                                    <li>Fashion</li>
+                                    <li>Food</li>
+                                    <li>Home Appliances</li>
+                                    <li>Beauty Products</li>
+                                    <li>Furniture</li>
+                                    <li>Books</li>
+                                    <li>Toys</li>
+                                    <li>Tools</li>
+                                    <li>Sports</li>
+                                </ul>
+                            </span> : ""}
                         {
                             cartDetails.map((obj) => {
                                 return (
@@ -103,6 +123,7 @@ function UserCart() {
                         }
 
 
+
                     </div>
                 </div>
                 <div className="col-md-4 right-user-cart">
@@ -112,7 +133,7 @@ function UserCart() {
                             <p>Items :</p><p id='item-sum'><i className="fa-solid fa-indian-rupee-sign"></i> {sum.toFixed(2)}</p>
                         </div>
                         <div className="order-summary-row">
-                            <p>Shipping and Handling :</p><p><i className="fa-solid fa-indian-rupee-sign"></i> {sum===0?"00:00":"50:00"} </p>
+                            <p>Shipping and Handling :</p><p><i className="fa-solid fa-indian-rupee-sign"></i> {sum === 0 ? "00:00" : "50:00"} </p>
                         </div>
                         {sum > 500 ? <div className="order-summary-row" id='shipping-discount'>
                             <p>Shipping and Handling Discount:</p><p><i className="fa-solid fa-indian-rupee-sign"></i> 50:00</p>
