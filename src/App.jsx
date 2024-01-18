@@ -7,7 +7,6 @@ import LoginPage from "./Pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage";
 import SellProductPage from "./Pages/SellProductPage";
 import UserProfilePage from "./Pages/UserProfilePage";
-import UserViewProductPage from "./Pages/UserViewProductPage";
 import UserCartPage from "./Pages/UserCartPage";
 import useLocalStorage from "use-local-storage";
 import ViewPostsPage from "./Pages/ViewPostsPage";
@@ -44,7 +43,6 @@ function App() {
               <Route path='/sell-product' element={<SellProductPage />} ></Route>
               <Route path='/seller-product-view' element={<SellerProductViewPage />} ></Route>
               <Route path='/view-account' element={<UserProfilePage />} ></Route>
-              <Route path='/view-my-product' element={<UserViewProductPage/>} ></Route>
               <Route path='/view-cart' element={<UserCartPage/>} ></Route>
               <Route path='/view-post' element={<ViewPostsPage/>} ></Route>
               <Route path='/admin' element={<AdminHome/>} ></Route>

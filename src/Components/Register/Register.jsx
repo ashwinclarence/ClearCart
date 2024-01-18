@@ -62,6 +62,7 @@ function Register() {
             reportCount: 0,
             location: "location",
             iSseller: false,
+            Cart:[]
           }
           addDoc(userRef, {
             username: name,
@@ -73,6 +74,7 @@ function Register() {
             reportCount: 0,
             location,
             iSseller: false,
+            Cart:[]
           }, docData)
         })
       })

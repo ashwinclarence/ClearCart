@@ -26,7 +26,7 @@ function UserNavbar() {
         } catch (error) {
             console.log(error);
         }
-       
+
     }
     // function to logout user
     const userLogout = (e) => {
@@ -50,7 +50,7 @@ function UserNavbar() {
         })
     }, [])
     // function to get current user infromation from firebase
-    if(auth.currentUser){
+    if (auth.currentUser) {
         getDocs(userRef).then((snapshot) => {
             snapshot.docs.forEach((doc) => {
                 if (auth.currentUser.uid === doc.data().userId) {
@@ -62,7 +62,7 @@ function UserNavbar() {
             console.log(err.message);
         })
     }
-   
+
 
     return (
         <span data-theme={theme ? "dark" : "light"}>
@@ -90,6 +90,7 @@ function UserNavbar() {
                         <div className="cart">
                             <button>{userStatus ? <Link to='/view-cart' id='cartlogo'><TiShoppingCart /> cart</Link> : <Link to='/login' id='cartlogo'><TiShoppingCart /> cart</Link>}</button>
                         </div>
+
                         <div className="profile">
                             <img src={navUserProfile ? navUserProfile : defaultuser} alt="" onClick={showSidebar} />
 
@@ -128,11 +129,11 @@ function UserNavbar() {
                     </li>
                     <li className="profile-links">
                         <i className="fa-regular fa-eye"></i>
-                        {userStatus? <Link to='/view-account' className='view-profile'>view Account</Link>: <Link to='/login' className='view-profile'>view Account</Link>}
+                        {userStatus ? <Link to='/view-account' className='view-profile'>view Account</Link> : <Link to='/login' className='view-profile'>view Account</Link>}
                     </li>
                     <li className="profile-links">
                         <i className="fa-brands fa-opencart"></i>
-                        {userStatus?<Link to='/view-cart' className='view-profile'>View Orders</Link>:<Link to='/login' className='view-profile'>View Orders</Link>}
+                        {userStatus ? <Link to='/view-cart' className='view-profile'>View Orders</Link> : <Link to='/login' className='view-profile'>View Orders</Link>}
                     </li>
                     {auth.currentUser ? <li className="profile-links part">
                         <i className="fa-solid fa-right-from-bracket"></i>
@@ -142,28 +143,32 @@ function UserNavbar() {
                         <Link to='/login' className='view-profile'>login</Link>
                     </li>}
 
+                    {auth.currentUser ? <li className="profile-links part">
+                        <i className="fa-solid fa-plus"></i>
+                        {isSeller ? <Link to='/sell-product' className='view-profile'>sell Product</Link> : <Link to='/register-sell-product' className='view-profile'>Become a seller</Link>}
+
+                    </li> : <li className="profile-links part">
+                        <i className="fa-solid fa-plus"></i>
+                       <Link to='/login' className='view-profile'>Become a seller</Link>
+                    </li>}
+
 
                     <li className="profile-links">
-                        <i className="fa-solid fa-plus"></i>
-                        {isSeller? <Link to='/sell-product' className='view-profile'>sell Product</Link>: <Link to='/register-sell-product' className='view-profile'>Become a seller</Link>}
-                       
-                    </li>
-                    <li className="profile-links part">
-                        <i className="fa-solid fa-tags"></i>
-                        <Link to='/view-my-product' className='view-profile'>View My Products</Link>
-                    </li>
-                    <li className="profile-links">
                         <i className="fa-solid fa-globe"></i>
-                        <Link to='/change-location' className='view-profile'>Change Location</Link>
+                        {auth.currentUser ? <Link to='/change-location' className='view-profile'>Change Location</Link> : <Link to='/login' className='view-profile'>Change Location</Link>}
+
                     </li>
                     <li className="profile-links part">
                         <i className="fa-solid fa-language"></i>
-                        <Link to='/' className='view-profile'>Change Language</Link>
+                        {auth.currentUser ? <Link to='/' className='view-profile'>Change Language</Link> : <Link to='/login' className='view-profile'>Change Language</Link>}
                     </li>
                     <li className="profile-links">
                         <i className="fa-solid fa-gear"></i>
-                        <Link to='/' className='view-profile'>Settings</Link>
+                        {auth.currentUser ? <Link to='/' className='view-profile'>Settings</Link> : <Link to='/login' className='view-profile'>Settings</Link>}
                     </li>
+
+
+
                 </ul>
             </div>
             <div className="nav-bottom-bar-mobile container-fluid">

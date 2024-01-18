@@ -8,5 +8,5 @@
 ::-webkit-scrollbar {display:none;}
 
 input{
-  caret-color: var(--text-color);
+  caret-color: #000;
 }
