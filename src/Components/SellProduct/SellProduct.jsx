@@ -101,7 +101,7 @@ function SellProduct() {
     return (
         <div className="sell-product-container container-fluid">
             {loader ? <Loader /> : ""}
-            <form action="" onSubmit={AddSellProduct}>
+            <form action="" autoComplete='off' onSubmit={AddSellProduct}>
                 <div className="row sell-product-row">
                     <div className="col-md-6 left-sell-product">
                         <label htmlFor="productName">Name of the Product</label>

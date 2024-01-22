@@ -22,7 +22,7 @@ function Register() {
     e.preventDefault()
     if (password === confirmPassword) {
       await createUserWithEmailAndPassword(auth, email, password).then((userCredentail) => {
-        alert(name+" Your Registeration Successfull")
+        alert(name+" your registeration is Successfull")
         const user = userCredentail.user;
         console.log((user));
         navigate('/')
@@ -36,7 +36,6 @@ function Register() {
         setPassword('')
         setConfirmPassword('')
         setLocation('')
-        setProfileImage('')
       })
       await updateProfile(auth.currentUser, {
         displayName: name,
@@ -80,13 +79,8 @@ function Register() {
       })
     } else {
       alert("Passwords Dosen't Match")
-      setname('')
-      setPhoneNumber('')
-      setEmail('')
       setPassword('')
       setConfirmPassword('')
-      setLocation('')
-      setProfileImage('')
     }
 
   }

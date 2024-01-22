@@ -151,6 +151,9 @@
 #empty-cart{
     text-align: justify;
 }
+#empty-cart-link{
+    text-decoration: none;
+}
 
 @media only screen and (max-width: 800px) {
     .cart-item-row {

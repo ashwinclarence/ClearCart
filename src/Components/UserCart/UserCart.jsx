@@ -4,6 +4,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../Firebase/config';
 import { AuthContext } from '../../Store/FirebaseContext';
 import UserCartQuantity from '../UserCartQuantity/UserCartQuantity';
+import { Link } from 'react-router-dom';
 function UserCart() {
     const { CurrentUserID } = useContext(AuthContext)
     const [pincode, setPincode] = useState('')
@@ -99,6 +100,7 @@ function UserCart() {
                                     <li>Tools</li>
                                     <li>Sports</li>
                                 </ul>
+                               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, quae. Aut placeat atque ut nisi iusto laudantium aliquid, nobis et sequi officiis at voluptate tempora fuga laboriosam, corrupti adipisci nihil. <Link to='/' id='empty-cart-link'>Grab the offer Products</Link></p> 
                             </span> : ""}
                         {
                             cartDetails.map((obj) => {

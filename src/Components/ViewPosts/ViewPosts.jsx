@@ -17,10 +17,7 @@ function ViewPosts() {
   const [alreadyInCart, setalreadyInCart] = useState(false)
   const { CurrentUserID } = useContext(AuthContext)
 
-  // date atpresent
-  let date = new Date()
-  // covert date after 5 days
-  date.setDate(date.getDate() + 5);
+  
 
 
   //useEffect to reach the top of the page while loading
@@ -52,6 +49,7 @@ function ViewPosts() {
   const reviewForm = (e) => {
     e.preventDefault()
     alert("Your Response Submited")
+    // updateDoc
     document.getElementById("review-form").style.display = 'none'
     document.getElementById("product-review-chart").style.display = 'block'
     setReviewDdesc('')
@@ -65,18 +63,18 @@ function ViewPosts() {
     document.getElementById("product-review-chart").style.display = 'block'
     setReviewDdesc('')
   }
+  // find the percentage of discount from the actual price to current price
   useEffect(() => {
     let a = products.productMarketPrice
     let b = products.productPrice
-    let diff = a - b
-    let avg = (a + b) / 2
-    let ratio = (diff / avg) * 100
-    setsavingsAmount(ratio)
+    let bb = b*100
+    let percent =bb/a
+    setsavingsAmount(percent)
   }, [products.productMarketPrice, products.productPrice])
 
+  // check wheather products already exist in the cart. if exist then update setalreadyInCart to true
   useEffect(() => {
     const checkCart = async () => {
-
       const docRef = doc(db, 'User', CurrentUserID);
       const userDoc = await getDoc(docRef);
       const existingProductIndex = userDoc.data().Cart.findIndex((element) => element.ProductID === state.proid);
@@ -88,7 +86,7 @@ function ViewPosts() {
     }
     checkCart()
   })
-  // function to add or update the cart in firestore
+  // function to add products in the cart in firestore
   const addToCart = async (e) => {
     e.preventDefault();
 
@@ -110,6 +108,10 @@ function ViewPosts() {
     }
   };
 
+  // date atpresent
+  let date = new Date()
+  // covert date after seller submited days
+  date.setDate(date.getDate() + Number(products.productDeliveryDays));
 
 
   return (
@@ -121,7 +123,7 @@ function ViewPosts() {
         <div className="col-md-6 view-post-name-box">
           <h5>{products.productCompany} </h5>
           <h5>{products.productName} </h5>
-          <p>product seller {products.sellerName}</p>
+          <p>Product seller {products.sellerName}</p>
           <h5><i className="fa-solid view-post-icons fa-indian-rupee-sign"></i><span >{products.productPrice}</span></h5>
           <p><i className="fa-solid view-post-icons fa-hand-holding-dollar"></i><span>{savingsAmount.toLocaleString()}% Off</span></p>
           {products.productPrice >= 500 ? <p><i className="fa-solid view-post-icons fa-truck"></i>Eligible for FREE Shipping</p> : <p ><i className="fa-solid view-post-icons fa-truck"></i>Products above 500 Rs are eligible for free shipping</p>}

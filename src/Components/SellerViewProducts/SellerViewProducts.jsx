@@ -9,8 +9,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Loader from '../Loader/loader';
 function SellerViewProducts() {
   const [loader,setLoader]=useState(false)
-  let date = new Date()
-  let newdate = date;
+   
   let { state } = useLocation()
   const [products, setProducts] = useState([]);
   const navigate = useNavigate()
@@ -80,7 +79,7 @@ function SellerViewProducts() {
           <p>Product seller {products.sellerName}</p>
           <p >{products.productAvailable ? <p id="product-available"><i className="fa-solid fa-square-check"></i> Product is currently available to Users</p> : <p id="product-unavailable"><i className="fa-solid fa-rectangle-xmark"></i> Product is currently unavailable to Users</p>} </p>
           <h5><i className="fa-solid fa-indian-rupee-sign"></i> {products.productPrice}</h5>
-          <p>if you order within {date.toDateString()} the item will delivery on {newdate.toDateString()}</p>
+          <p>The Products must deliver within {products.productDeliveryDays} Days</p>
           <p>{products.PurchaseCount} users brought this item</p>
         </div>
       </div>

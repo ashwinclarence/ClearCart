@@ -69,7 +69,7 @@ function SellerRegistration() {
                     <p id='seller-description3'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum mollitia neque cupiditate id culpa illum? Deserunt, optio magnam, sit eum neque magni, eaque non vel voluptatem ipsum iste iusto quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione non eius consectetur accusamus rem. Laboriosam eveniet quis a iusto neque, provident, maxime, itaque nam amet hic voluptatibus sed? Est, eveniet! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae labore, in consequatur laboriosam ex quibusdam facere nemo qui unde quis esse architecto obcaecati asperiores! Ea voluptas dolores debitis cum magnam.</p>
                 </div>
                 <div className="col-md-6">
-                    <form action="" id='seller-form' onSubmit={seller}>
+                    <form action="" id='seller-form' autoComplete='off' onSubmit={seller}>
                         <h3>Seller Registeration Form</h3>
                         <input
                             type="text"

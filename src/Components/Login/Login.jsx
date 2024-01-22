@@ -18,7 +18,7 @@ function Login() {
     }).catch((err) => {
       setUsername("")
       setPassword("")
-      document.getElementById("error-label").style.display = "block"
+      alert("Invalid Email or Password")
       console.log(err.code);
       console.log(err.message);
     })
@@ -51,7 +51,6 @@ function Login() {
               required />
             <button type='submit'>Login</button>
           </form>
-          <p id='error-label'>Invalid Username or Password</p>
 
           <Link to='/register' className='back-home'><p>Don&#39;t have an account?</p></Link>
           <Link to='/' className='back-home'><p>Go Back</p></Link>
